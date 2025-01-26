@@ -1,101 +1,202 @@
-import Image from "next/image";
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Header from '@/components/Header'
+import GameShapes from '@/components/decorative/GameShapes'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const features = [
+    {
+      number: '456',
+      title: 'Red Light, Green Light',
+      description: 'AI-powered movement prediction system. Test your reflexes against intelligent agents that learn and adapt to player behavior patterns.',
+      icon: '🚦',
+      tokenReward: '1000 $DSQD',
+      players: '234'
+    },
+    {
+      number: '123',
+      title: 'Dynamic Team Challenges',
+      description: 'Form alliances or compete solo in team-based survival games. Every agent has unique traits that influence their cooperation or betrayal tendencies.',
+      icon: '🤝',
+      tokenReward: '2000 $DSQD',
+      players: '567'
+    },
+    {
+      number: '067',
+      title: 'Strategic Resource Management',
+      description: 'Manage your in-game resources wisely. Each decision could be the difference between survival and elimination.',
+      icon: '💎',
+      tokenReward: '1500 $DSQD',
+      players: '189'
+    },
+    {
+      number: '218',
+      title: 'Adaptive Difficulty System',
+      description: 'The game evolves with you. AI agents become more challenging as you progress, creating an ever-increasing test of skill and strategy.',
+      icon: '🎯',
+      tokenReward: '3000 $DSQD',
+      players: '345'
+    }
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className="min-h-screen bg-primary overflow-hidden">
+      <GameShapes />
+      <Header />
+      
+      {/* Split Screen Hero Section */}
+      <section className="min-h-screen pt-20 relative split-section-bg">
+        {/* Left Side - Game Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div className="relative px-8 py-12 lg:py-24 flex flex-col justify-center items-center lg:items-end">
+            <div className="max-w-xl w-full space-y-8">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="space-y-4"
+              >
+                <div className="flex items-center space-x-4">
+                  <span className="game-number text-xl tracking-widest">GAME #2024</span>
+                  <div className="flex-1 h-px bg-squid-pink/30"></div>
+                </div>
+                <h1 className="text-5xl lg:text-7xl font-bold">
+                  <span className="text-white block">Welcome to</span>
+                  <span className="squid-text block mt-2">DigiSquid</span>
+                  <span className="text-white block mt-2">Games</span>
+                </h1>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="space-y-6"
+              >
+                <p className="text-gray-400 text-lg">
+                  Enter the next generation of AI-driven survival games. 
+                  Where strategy meets artificial intelligence, and only the most adaptable survive.
+                </p>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <a 
+                    href="https://www.digimon.tech" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="engine-credit group"
+                  >
+                    <span className="game-number text-xs mr-2">※</span>
+                    <span className="text-gray-400 group-hover:text-squid-pink transition-colors">
+                      Built based on Digimon Engine
+                    </span>
+                  </a>
+                </motion.div>
+                <div className="flex flex-col space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <span className="text-squid-pink font-mono">Total Prize Pool:</span>
+                    <span className="token-amount">7500 $DSQD</span>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <span className="text-squid-pink font-mono">Players Online:</span>
+                    <span className="text-white font-mono text-xl">1,234</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <a 
+                  href="https://github.com/yourusername/digisquid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="squid-button px-8 py-4 rounded-lg text-lg font-semibold group relative inline-flex items-center justify-center"
+                >
+                  <span className="game-number absolute -top-3 -left-2 opacity-50 group-hover:opacity-100 font-mono">456</span>
+                  <span>GitHub Repo</span>
+                  <motion.span
+                    className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    initial={{ x: -10 }}
+                    whileHover={{ x: 0 }}
+                  >
+                    →
+                  </motion.span>
+                </a>
+                <Link 
+                  href="/demo"
+                  className="border border-gray-600 text-gray-300 px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors text-lg relative group inline-block"
+                >
+                  <span className="game-number absolute -top-3 -left-2 opacity-50 group-hover:opacity-100 font-mono">067</span>
+                  Watch Demo
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right Side - Game Modes */}
+          <div className="relative px-8 py-12 lg:py-24">
+            <div className="max-w-xl mx-auto space-y-8">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="space-y-6"
+              >
+                <div className="flex items-center space-x-4">
+                  <span className="text-squid-pink font-mono text-xl">ACTIVE GAMES</span>
+                  <div className="flex-1 h-px bg-squid-pink/30"></div>
+                </div>
+                <div className="space-y-4">
+                  {features.map((feature, index) => (
+                    <motion.div
+                      key={feature.title}
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 * index + 0.8 }}
+                      className="game-card p-6 rounded-xl relative group cursor-pointer"
+                    >
+                      <div className="flex items-start space-x-4">
+                        <div className="text-4xl group-hover:scale-110 transition-transform">
+                          {feature.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xl font-semibold squid-text truncate">
+                            {feature.title}
+                          </h3>
+                          <p className="text-gray-400 mt-2 text-sm line-clamp-2">
+                            {feature.description}
+                          </p>
+                          <div className="mt-3 flex items-center space-x-4">
+                            <span className="text-squid-pink/70 text-xs font-mono">
+                              Players: {feature.players}
+                            </span>
+                            <span className="token-amount text-sm">
+                              {feature.tokenReward}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <span className="game-number font-mono">{feature.number}</span>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-squid-pink text-sm font-mono tracking-wider">ENTER GAME →</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+    </main>
+  )
 }

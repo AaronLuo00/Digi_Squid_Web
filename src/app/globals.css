@@ -3,19 +3,224 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 26, 27, 30;
+  --background-end-rgb: 45, 27, 105;
+  --squid-pink: 255, 2, 102;
+  --squid-blue: 0, 240, 255;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      135deg,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .squid-text {
+    position: relative;
+    color: #FF0266;
+    text-shadow: 0 0 10px rgba(255, 2, 102, 0.5);
+    animation: textGlow 2s ease-in-out infinite;
+  }
+
+  .squid-text::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #FF0266;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+  }
+
+  .squid-text:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .squid-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid #FF0266;
+    background: rgba(255, 2, 102, 0.1);
+    color: #FF0266;
+  }
+  
+  .squid-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 2, 102, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .squid-button:hover {
+    box-shadow: 0 0 20px rgba(255, 2, 102, 0.5);
+    text-shadow: 0 0 10px rgba(255, 2, 102, 0.5);
+    background: rgba(255, 2, 102, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .squid-button:hover::before {
+    left: 100%;
+  }
+
+  .game-card {
+    position: relative;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 2, 102, 0.1);
+    transition: all 0.3s ease;
+    background: rgba(26, 27, 30, 0.7);
+    overflow: hidden;
+  }
+
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 2, 102, 0.1) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .game-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 2, 102, 0.5),
+      transparent
+    );
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+  }
+
+  .game-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 2, 102, 0.3);
+    box-shadow: 0 5px 20px rgba(255, 2, 102, 0.2);
+    background: rgba(45, 27, 105, 0.4);
+  }
+
+  .game-card:hover::before {
+    opacity: 1;
+  }
+
+  .game-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .game-number {
+    font-family: 'Courier New', monospace;
+    color: rgba(255, 2, 102, 0.7);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .token-amount {
+    font-family: 'Courier New', monospace;
+    color: #FF0266;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+  }
+
+  .token-amount::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -12px;
+    width: 6px;
+    height: 6px;
+    background: #FF0266;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px #FF0266;
+  }
+
+  .engine-credit {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 2, 102, 0.05);
+    border: 1px solid rgba(255, 2, 102, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .engine-credit:hover {
+    background: rgba(255, 2, 102, 0.1);
+    border-color: rgba(255, 2, 102, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .engine-credit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: #FF0266;
+    opacity: 0.5;
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 2, 102, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 2, 102, 0.8);
+  }
+}
+
+.split-section-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.split-section-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  background: rgba(45, 27, 105, 0.2);
+  z-index: -1;
 }
