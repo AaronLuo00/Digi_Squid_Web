@@ -35,7 +35,6 @@ const DynamicCookie = () => {
   const [paths, setPaths] = useState<CutPath[]>([])
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 })
   const [collisionPoints, setCollisionPoints] = useState<CollisionPoint[]>([])
-  const pathIdRef = useRef(0)
   const collisionIdRef = useRef(0)
   
   useEffect(() => {

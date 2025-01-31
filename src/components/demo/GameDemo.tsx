@@ -3,9 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-const GRID_SIZE = 20
-const PLAYER_SIZE = 16
-
 export default function GameDemo() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -58,7 +55,7 @@ export default function GameDemo() {
         <h2 className="text-3xl font-bold squid-text mb-4">Red Light, Green Light</h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
           Test your reflexes against our AI movement prediction system. 
-          One wrong move, and it's game over.
+          One wrong move, and it&apos;s game over.
         </p>
       </div>
 

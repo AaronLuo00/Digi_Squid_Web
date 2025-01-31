@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import GameMechanicsIcon from '@/components/icons/nav/GameMechanicsIcon'

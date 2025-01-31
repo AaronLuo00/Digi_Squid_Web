@@ -201,8 +201,8 @@ export default function RedLightGreenLightPage() {
           >
             <h1 className="text-4xl font-bold">Red Light, Green Light X</h1>
             <p className="text-xl text-gray-400">
-              Welcome to the next evolution of the classic children's game. In this AI-powered
-              version, you're not just playing against other players - you're matching wits with
+              Welcome to the next evolution of the classic children&apos;s game. In this AI-powered
+              version, you&apos;re not just playing against other players - you&apos;re matching wits with
               our advanced movement prediction system.
             </p>
           </motion.div>
