@@ -9,16 +9,15 @@ const behaviorSystems = [
     capabilities: [
       'Historical action analysis',
       'Strategy identification',
-      'Behavioral prediction'
+      'Behavioral prediction',
+      'Cross-game pattern matching'
     ],
-    implementation: `
-const analyzePattern = (history: Action[]): Pattern => {
-  return {
-    aggression: calculateAggression(history),
-    cooperation: assessCooperation(history),
-    consistency: evaluateConsistency(history)
-  }
-}`
+    implementation: `const analyzePattern = (history: Action[]): Pattern => ({
+  aggression: calculateAggression(history),
+  cooperation: assessCooperation(history),
+  consistency: evaluateConsistency(history),
+  crossGamePatterns: analyzeCrossGameBehavior(history)
+})`
   },
   {
     title: 'Real-time Adaptation',
@@ -26,17 +25,17 @@ const analyzePattern = (history: Action[]): Pattern => {
     capabilities: [
       'Dynamic difficulty scaling',
       'Situational awareness',
-      'Tactical adjustments'
+      'Tactical adjustments',
+      'Performance optimization'
     ],
-    implementation: `
-const adaptStrategy = (
+    implementation: `const adaptStrategy = (
   currentState: GameState,
   playerAction: Action
-): Strategy => {
-  const risk = assessRisk(currentState)
-  const counter = determineCounter(playerAction)
-  return optimizeResponse(risk, counter)
-}`
+): Strategy => optimizeResponse(
+  assessRisk(currentState),
+  determineCounter(playerAction),
+  getCrossGameInsights(playerAction)
+)`
   },
   {
     title: 'Learning System',
@@ -44,17 +43,60 @@ const adaptStrategy = (
     capabilities: [
       'Success rate tracking',
       'Strategy effectiveness',
-      'Outcome optimization'
+      'Outcome optimization',
+      'Knowledge transfer'
     ],
-    implementation: `
-class LearningModule {
-  updateKnowledge(
-    action: Action,
-    outcome: Outcome
-  ): void {
+    implementation: `class LearningModule {
+  updateKnowledge(action: Action, outcome: Outcome): void {
     this.successRate.update(action, outcome)
     this.adjustWeights(outcome.effectiveness)
     this.optimizeStrategy()
+  }
+}`
+  }
+]
+
+const crossGameLearning = [
+  {
+    component: 'Knowledge Transfer',
+    description: 'System for sharing and applying learned behaviors across different games.',
+    features: [
+      'Pattern abstraction',
+      'Strategy mapping',
+      'Behavior translation',
+      'Context adaptation'
+    ],
+    code: `class KnowledgeTransfer {
+  transferBehavior(
+    sourceGame: GameType,
+    targetGame: GameType,
+    behavior: Behavior
+  ): AdaptedBehavior {
+    const abstractPattern = this.abstractBehavior(behavior)
+    return this.adaptToGameMechanics(
+      this.mapToNewContext(abstractPattern, targetGame)
+    )
+  }
+}`
+  },
+  {
+    component: 'Memory Network',
+    description: 'Neural network for storing and retrieving cross-game experiences.',
+    features: [
+      'Experience embedding',
+      'Contextual retrieval',
+      'Similarity matching',
+      'Adaptive recall'
+    ],
+    code: `class MemoryNetwork {
+  retrieveRelevantExperience(
+    currentState: GameState,
+    targetGame: GameType
+  ): Experience[] {
+    const stateEmbedding = this.embedState(currentState)
+    return this.adaptMemoriesToContext(
+      this.findSimilarExperiences(stateEmbedding, targetGame)
+    )
   }
 }`
   }
@@ -67,7 +109,8 @@ const adaptationPhases = [
     metrics: [
       'Action frequency',
       'Pattern consistency',
-      'Response timing'
+      'Response timing',
+      'Cross-game correlations'
     ]
   },
   {
@@ -76,7 +119,8 @@ const adaptationPhases = [
     metrics: [
       'Success probability',
       'Risk assessment',
-      'Pattern matching'
+      'Pattern matching',
+      'Knowledge transfer rate'
     ]
   },
   {
@@ -85,7 +129,18 @@ const adaptationPhases = [
     metrics: [
       'Strategy updates',
       'Behavior shifts',
-      'Performance tracking'
+      'Performance tracking',
+      'Learning efficiency'
+    ]
+  },
+  {
+    phase: 'Optimization',
+    description: 'Fine-tune responses and improve performance',
+    metrics: [
+      'Response accuracy',
+      'Adaptation speed',
+      'Resource efficiency',
+      'Cross-game success rate'
     ]
   }
 ]
@@ -118,7 +173,7 @@ export default function DynamicBehaviorPage() {
           className="text-gray-400 text-lg"
         >
           Our AI agents feature advanced learning and adaptation capabilities, 
-          creating dynamic and unpredictable gameplay experiences.
+          with sophisticated cross-game knowledge transfer and real-time optimization.
         </motion.p>
       </div>
 
@@ -157,8 +212,53 @@ export default function DynamicBehaviorPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-gray-300 mb-2">Implementation</h4>
-                  <pre className="bg-gray-900/50 p-3 rounded-lg overflow-x-auto">
-                    <code className="text-sm text-gray-400">{system.implementation}</code>
+                  <pre className="bg-gray-900/50 p-2 rounded-lg overflow-x-auto">
+                    <code className="text-xs text-gray-400">{system.implementation}</code>
+                  </pre>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Cross-Game Learning */}
+      <div className="space-y-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="text-2xl font-semibold"
+        >
+          Cross-Game Learning
+        </motion.h2>
+        <div className="space-y-6">
+          {crossGameLearning.map((component, index) => (
+            <motion.div
+              key={component.component}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 + index * 0.1 }}
+              className="p-6 border border-gray-800 rounded-xl space-y-4"
+            >
+              <h3 className="text-xl font-semibold squid-text">{component.component}</h3>
+              <p className="text-gray-400">{component.description}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-gray-300">Features</h4>
+                  <ul className="space-y-2">
+                    {component.features.map((feature, i) => (
+                      <li key={i} className="flex items-center text-sm text-gray-500">
+                        <span className="text-squid-pink mr-2">→</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-300 mb-2">Implementation</h4>
+                  <pre className="bg-gray-900/50 p-2 rounded-lg overflow-x-auto">
+                    <code className="text-xs text-gray-400">{component.code}</code>
                   </pre>
                 </div>
               </div>
@@ -172,18 +272,18 @@ export default function DynamicBehaviorPage() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
+          transition={{ delay: 1.1 }}
           className="text-2xl font-semibold"
         >
           Adaptation Process
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {adaptationPhases.map((phase, index) => (
             <motion.div
               key={phase.phase}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 + index * 0.1 }}
+              transition={{ delay: 1.2 + index * 0.1 }}
               className="relative p-6 border border-gray-800 rounded-xl bg-gray-900/50"
             >
               <div className="absolute -top-3 -left-2">
@@ -208,38 +308,32 @@ export default function DynamicBehaviorPage() {
         </div>
       </div>
 
-      {/* System Diagram */}
+      {/* System Overview */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.1 }}
+        transition={{ delay: 1.5 }}
         className="p-6 border border-gray-800 rounded-xl space-y-4"
       >
         <h2 className="text-xl font-semibold">System Overview</h2>
-        <pre className="bg-gray-900/50 p-4 rounded-lg overflow-x-auto">
-          <code className="text-sm text-gray-300">
-{`class DynamicBehaviorSystem {
-  private learningModule: LearningModule
-  private patternRecognition: PatternRecognition
-  private adaptationEngine: AdaptationEngine
-
-  async processGameState(state: GameState): Promise<Action> {
-    // 1. Observe current state
+        <pre className="bg-gray-900/50 p-2 rounded-lg overflow-x-auto">
+          <code className="text-xs text-gray-400">{`class DynamicBehaviorSystem {
+  async processGameState(
+    state: GameState,
+    gameType: GameType
+  ): Promise<Action> {
     const observation = this.patternRecognition.analyze(state)
-    
-    // 2. Learn from previous actions
+    const relevantExperiences = await this.crossGameMemory
+      .retrieveRelevantExperience(state, gameType)
     const knowledge = this.learningModule.getCurrentKnowledge()
+    const adaptedStrategies = this.knowledgeTransfer
+      .transferBehavior(relevantExperiences, gameType)
     
-    // 3. Adapt strategy
-    const strategy = this.adaptationEngine.optimize(
-      observation,
-      knowledge
-    )
-    
-    return strategy.getBestAction()
+    return this.adaptationEngine
+      .optimize(observation, knowledge, adaptedStrategies)
+      .getBestAction()
   }
-}`}
-          </code>
+}`}</code>
         </pre>
       </motion.div>
     </div>

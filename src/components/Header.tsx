@@ -8,8 +8,8 @@ const Header = () => {
   const navItems = [
     { name: '001', label: 'Documentation', href: '/docs' },
     { name: '002', label: 'Community', href: '#' },
-    { name: '003', label: 'Leaderboard', href: '#' },
-    { name: '004', label: 'Connect', href: '#' },
+    { name: '003', label: 'Twitter', href: '#' },
+    { name: '004', label: 'GitHub', href: 'https://github.com/CohumanSpace/digimon-engine' },
   ]
 
   return (
@@ -33,7 +33,7 @@ const Header = () => {
             </div>
             <div className="flex items-center space-x-2">
               <span className="text-squid-pink font-mono">PRIZE POOL:</span>
-              <span className="text-white font-mono">7,500 $DSQD</span>
+              <span className="text-white font-mono">8800 $DSG</span>
             </div>
             <div className="flex items-center space-x-2">
               <span className="text-squid-pink font-mono">NEXT GAME:</span>

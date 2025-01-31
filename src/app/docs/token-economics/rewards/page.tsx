@@ -7,30 +7,30 @@ const rewardTypes = [
     title: 'Tournament Prizes',
     description: 'Primary rewards for tournament performance.',
     tiers: [
-      { position: '1st Place', reward: '3,750 $DSQD', color: 'text-yellow-500' },
-      { position: '2nd Place', reward: '1,875 $DSQD', color: 'text-gray-300' },
-      { position: '3rd Place', reward: '937 $DSQD', color: 'text-amber-600' },
-      { position: 'Top 10', reward: '134 $DSQD', color: 'text-gray-400' }
+      { position: '1st Place', reward: '3,750 $DSG', color: 'text-yellow-500' },
+      { position: '2nd Place', reward: '1,875 $DSG', color: 'text-gray-300' },
+      { position: '3rd Place', reward: '937 $DSG', color: 'text-amber-600' },
+      { position: 'Top 10', reward: '134 $DSG', color: 'text-gray-400' }
     ]
   },
   {
     title: 'Survival Rewards',
     description: 'Daily rewards for staying alive in tournaments.',
     tiers: [
-      { position: 'Day 1', reward: '10 $DSQD', color: 'text-gray-400' },
-      { position: 'Day 3', reward: '50 $DSQD', color: 'text-gray-300' },
-      { position: 'Day 5', reward: '100 $DSQD', color: 'text-amber-600' },
-      { position: 'Day 7', reward: '200 $DSQD', color: 'text-yellow-500' }
+      { position: 'Day 1', reward: '10 $DSG', color: 'text-gray-400' },
+      { position: 'Day 3', reward: '50 $DSG', color: 'text-gray-300' },
+      { position: 'Day 5', reward: '100 $DSG', color: 'text-amber-600' },
+      { position: 'Day 7', reward: '200 $DSG', color: 'text-yellow-500' }
     ]
   },
   {
     title: 'Achievement Bonuses',
     description: 'Special rewards for accomplishing specific feats.',
     tiers: [
-      { position: 'First Win', reward: '500 $DSQD', color: 'text-yellow-500' },
-      { position: 'Perfect Game', reward: '1,000 $DSQD', color: 'text-amber-600' },
-      { position: 'Team Victory', reward: '250 $DSQD', color: 'text-gray-300' },
-      { position: 'Survival Streak', reward: '300 $DSQD', color: 'text-gray-400' }
+      { position: 'First Win', reward: '500 $DSG', color: 'text-yellow-500' },
+      { position: 'Perfect Game', reward: '1,000 $DSG', color: 'text-amber-600' },
+      { position: 'Team Victory', reward: '250 $DSG', color: 'text-gray-300' },
+      { position: 'Survival Streak', reward: '300 $DSG', color: 'text-gray-400' }
     ]
   }
 ]
@@ -47,9 +47,9 @@ const rewardMultipliers = [
   {
     factor: 'Staking Amount',
     multipliers: [
-      { condition: '1,000 $DSQD', value: '1.1x' },
-      { condition: '5,000 $DSQD', value: '1.3x' },
-      { condition: '10,000 $DSQD', value: '1.5x' }
+      { condition: '1,000 $DSG', value: '1.1x' },
+      { condition: '5,000 $DSG', value: '1.3x' },
+      { condition: '10,000 $DSG', value: '1.5x' }
     ]
   },
   {
@@ -77,7 +77,7 @@ const calculatePrize = (
 }
 
 // First place with 1.5x performance and 1.3x staking
-const prize = calculatePrize(3750, 1.5, 1.3);  // 7,312.5 $DSQD`
+const prize = calculatePrize(3750, 1.5, 1.3);  // 7,312.5 $DSG`
   },
   {
     name: 'Survival Reward',
@@ -93,7 +93,7 @@ const calculateSurvival = (
 }
 
 // 5 days survival with 3-day streak
-const reward = calculateSurvival(10, 5, 3);  // 65 $DSQD`
+const reward = calculateSurvival(10, 5, 3);  // 65 $DSG`
   }
 ]
 

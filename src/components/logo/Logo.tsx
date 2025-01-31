@@ -34,12 +34,12 @@ const Logo = () => {
         animate="animate"
       >
         {/* SVG Container */}
-        <svg width={iconSize * 3.5} height={iconSize} viewBox={`0 0 ${iconSize * 3.5} ${iconSize}`}>
+        <svg width="98" height="28" viewBox="0 0 98 28">
           {/* Circle (Manager) */}
           <motion.circle
-            cx={iconSize / 2}
-            cy={iconSize / 2}
-            r={(iconSize - strokeWidth * 2) / 2}
+            cx="14"
+            cy="14"
+            r="12"
             stroke={color}
             strokeWidth={strokeWidth}
             fill="none"
@@ -51,9 +51,9 @@ const Logo = () => {
 
           {/* Triangle (Soldier) */}
           <motion.path
-            d={`M${iconSize * 1.75} ${strokeWidth} 
-                L${iconSize * 2.25} ${iconSize - strokeWidth} 
-                L${iconSize * 1.25} ${iconSize - strokeWidth} Z`}
+            d="M49 2 
+               L63 26 
+               L35 26 Z"
             stroke={color}
             strokeWidth={strokeWidth}
             fill="none"
@@ -65,10 +65,10 @@ const Logo = () => {
 
           {/* Square (Worker) */}
           <motion.rect
-            x={iconSize * 2.5 + strokeWidth}
-            y={strokeWidth}
-            width={iconSize - strokeWidth * 2}
-            height={iconSize - strokeWidth * 2}
+            x="72"
+            y="2"
+            width="24"
+            height="24"
             stroke={color}
             strokeWidth={strokeWidth}
             fill="none"
@@ -80,7 +80,7 @@ const Logo = () => {
 
           {/* Connecting Lines */}
           <motion.path
-            d={`M${iconSize} ${iconSize / 2} H${iconSize * 3}`}
+            d="M28 14 H84"
             stroke={color}
             strokeWidth={1}
             strokeDasharray="4 4"
@@ -95,7 +95,7 @@ const Logo = () => {
 
           {/* Additional decorative lines */}
           <motion.path
-            d={`M${iconSize * 1.75} ${iconSize / 2} V${iconSize - strokeWidth}`}
+            d="M49 14 V26"
             stroke={color}
             strokeWidth={1}
             strokeDasharray="2 2"
@@ -141,10 +141,10 @@ const Logo = () => {
         transition={{ duration: 0.5, delay: 0.8 }}
       >
         <motion.span
-          className="text-2xl font-bold tracking-wider squid-text inline-block"
+          className="text-2xl digimon-text inline-block"
           whileHover={{ 
             scale: 1.05,
-            textShadow: "0 0 15px rgba(255,2,102,0.8)"
+            textShadow: "0 0 8px rgba(255,2,102,0.5)"
           }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >

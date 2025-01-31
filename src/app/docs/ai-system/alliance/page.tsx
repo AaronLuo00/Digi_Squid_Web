@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const allianceFeatures = [
   {
     title: 'Trust System',
-    description: 'Dynamic trust calculation based on interaction history and behavior patterns.',
+    description: 'Multi-layered trust calculation based on interaction history and behavior patterns.',
     metrics: [
       {
         name: 'Cooperation Rate',
@@ -21,6 +21,11 @@ const allianceFeatures = [
         name: 'Betrayal Risk',
         description: 'Probability of alliance breakdown',
         range: '0% - 100%'
+      },
+      {
+        name: 'Resource Synergy',
+        description: 'Combined resource utilization efficiency',
+        range: '1.0x - 3.0x'
       }
     ]
   },
@@ -42,6 +47,11 @@ const allianceFeatures = [
         name: 'Team Balance',
         description: 'Distribution of skills and roles',
         range: '0.0 - 1.0'
+      },
+      {
+        name: 'Cross-game Value',
+        description: 'Potential benefits in other games',
+        range: '0.0 - 2.0x'
       }
     ]
   },
@@ -63,8 +73,60 @@ const allianceFeatures = [
         name: 'Stability Factor',
         description: 'Long-term alliance sustainability',
         range: '0.0 - 1.0'
+      },
+      {
+        name: 'Resource Flow',
+        description: 'Efficiency of resource distribution',
+        range: '0.5x - 2.0x'
       }
     ]
+  }
+]
+
+const resourceSystem = [
+  {
+    component: 'Resource Evaluation',
+    description: 'System for analyzing and optimizing resource-based alliance decisions.',
+    features: [
+      'Resource compatibility analysis',
+      'Synergy potential calculation',
+      'Distribution optimization',
+      'Cross-game resource mapping'
+    ],
+    code: `class ResourceEvaluator {
+  evaluateAlliance(
+    ownResources: Resources,
+    partnerResources: Resources
+  ): AllianceValue {
+    return this.computeValue(
+      this.calculateSynergy(ownResources, partnerResources),
+      this.optimizeDistribution(ownResources, partnerResources)
+    )
+  }
+}`
+  },
+  {
+    component: 'Trust Calculator',
+    description: 'Multi-layered system for computing and updating trust levels.',
+    features: [
+      'Historical interaction analysis',
+      'Resource sharing patterns',
+      'Betrayal risk assessment',
+      'Cross-game trust transfer'
+    ],
+    code: `class TrustCalculator {
+  calculateTrust(
+    partner: Player,
+    context: GameContext
+  ): TrustScore {
+    return this.synthesizeTrust(
+      this.computeBaseScore(partner),
+      this.evaluateResourceTrust(partner),
+      this.getCrossGameTrust(partner),
+      context
+    )
+  }
+}`
   }
 ]
 
@@ -74,61 +136,55 @@ const allianceStages = [
     actions: [
       'Evaluate potential allies',
       'Calculate compatibility scores',
+      'Assess resource synergies',
       'Propose alliance terms'
     ],
-    code: `
-const evaluateAlliance = (
+    code: `const evaluateAlliance = (
   player: Player,
   potential: Player
-): number => {
-  const compatibility = calculateCompatibility(
-    player.strategy,
-    potential.strategy
-  )
-  const risk = assessRisk(potential.history)
-  return compatibility * (1 - risk)
-}`
+): AllianceScore => computeFinalScore(
+  calculateCompatibility(player.strategy, potential.strategy),
+  evaluateResourceSynergy(player.resources, potential.resources),
+  assessCrossGamePotential(player, potential)
+)`
   },
   {
     stage: 'Maintenance',
     actions: [
       'Monitor trust levels',
-      'Share resources efficiently',
+      'Optimize resource sharing',
+      'Track alliance performance',
       'Coordinate actions'
     ],
-    code: `
-const updateTrust = (
-  action: Action,
-  outcome: Outcome
+    code: `const updateAllianceStatus = (
+  alliance: Alliance,
+  performance: Performance
 ): void => {
-  const cooperation = measureCooperation(action)
-  const impact = calculateImpact(outcome)
-  this.trustScore = updateScore(
-    this.trustScore,
-    cooperation,
-    impact
+  const stability = assessStability(
+    calculateTrustScore(alliance),
+    evaluateResourceUse(alliance)
   )
+  if (shouldAdjust(stability)) {
+    optimizeAlliance(alliance, performance)
+  }
 }`
   },
   {
     stage: 'Evolution',
     actions: [
       'Adapt to changing conditions',
-      'Strengthen or dissolve bonds',
+      'Strengthen resource synergies',
+      'Expand alliance benefits',
       'Optimize team dynamics'
     ],
-    code: `
-const evolveAlliance = (
-  performance: Performance,
+    code: `const evolveAlliance = (
+  alliance: Alliance,
   gameState: GameState
-): AllianceAction => {
-  if (shouldStrengthen(performance)) {
-    return deepenCooperation()
-  }
-  return performance.trust < THRESHOLD
-    ? dissolveAlliance()
-    : maintainStatus()
-}`
+): AllianceAction => optimizeAlliance(
+  evaluatePerformance(alliance),
+  assessGrowthPotential(alliance),
+  calculateCrossGameBenefits(alliance)
+)`
   }
 ]
 
@@ -160,7 +216,7 @@ export default function AllianceSystemPage() {
           className="text-gray-400 text-lg"
         >
           A sophisticated system managing relationships between AI agents and players, 
-          creating dynamic team formations and strategic partnerships.
+          featuring resource-based evaluation and multi-layered trust mechanics.
         </motion.p>
       </div>
 
@@ -185,7 +241,7 @@ export default function AllianceSystemPage() {
             >
               <h3 className="text-xl font-semibold squid-text">{feature.title}</h3>
               <p className="text-gray-400">{feature.description}</p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {feature.metrics.map((metric) => (
                   <div
                     key={metric.name}
@@ -208,12 +264,57 @@ export default function AllianceSystemPage() {
         </div>
       </div>
 
+      {/* Resource System */}
+      <div className="space-y-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="text-2xl font-semibold"
+        >
+          Resource System
+        </motion.h2>
+        <div className="space-y-6">
+          {resourceSystem.map((component, index) => (
+            <motion.div
+              key={component.component}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 + index * 0.1 }}
+              className="p-6 border border-gray-800 rounded-xl space-y-4"
+            >
+              <h3 className="text-xl font-semibold squid-text">{component.component}</h3>
+              <p className="text-gray-400">{component.description}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-gray-300">Features</h4>
+                  <ul className="space-y-2">
+                    {component.features.map((feature, i) => (
+                      <li key={i} className="flex items-center text-sm text-gray-500">
+                        <span className="text-squid-pink mr-2">→</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-300 mb-2">Implementation</h4>
+                  <pre className="bg-gray-900/50 p-2 rounded-lg overflow-x-auto">
+                    <code className="text-xs text-gray-400">{component.code}</code>
+                  </pre>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
       {/* Alliance Lifecycle */}
       <div className="space-y-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
+          transition={{ delay: 1.1 }}
           className="text-2xl font-semibold"
         >
           Alliance Lifecycle
@@ -224,7 +325,7 @@ export default function AllianceSystemPage() {
               key={stage.stage}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 + index * 0.1 }}
+              transition={{ delay: 1.2 + index * 0.1 }}
               className="relative p-6 border border-gray-800 rounded-xl bg-gray-900/50"
             >
               <div className="absolute -top-3 -left-2">
@@ -244,8 +345,8 @@ export default function AllianceSystemPage() {
                     ))}
                   </div>
                   <div>
-                    <pre className="bg-gray-900/70 p-3 rounded-lg overflow-x-auto">
-                      <code className="text-sm text-gray-400">{stage.code}</code>
+                    <pre className="bg-gray-900/70 p-2 rounded-lg overflow-x-auto">
+                      <code className="text-xs text-gray-400">{stage.code}</code>
                     </pre>
                   </div>
                 </div>
@@ -259,7 +360,7 @@ export default function AllianceSystemPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.1 }}
+        transition={{ delay: 1.5 }}
         className="p-6 border border-gray-800 rounded-xl space-y-4"
       >
         <h2 className="text-xl font-semibold">Implementation Notes</h2>
@@ -274,7 +375,11 @@ export default function AllianceSystemPage() {
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-squid-pink mt-1">→</span>
-            <span>Network effects propagate through maximum 2 degrees of separation</span>
+            <span>Resource synergy effects propagate through alliance network</span>
+          </li>
+          <li className="flex items-start space-x-2">
+            <span className="text-squid-pink mt-1">→</span>
+            <span>Cross-game alliance benefits apply to connected games</span>
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-squid-pink mt-1">→</span>

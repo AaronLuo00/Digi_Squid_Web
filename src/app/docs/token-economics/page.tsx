@@ -3,76 +3,75 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-const tokenMetrics = [
-  {
-    label: 'Total Supply',
-    value: '100M',
-    description: 'Maximum $DSQD tokens',
-    change: '+0%'
-  },
-  {
-    label: 'Circulating Supply',
-    value: '45M',
-    description: 'Currently in circulation',
-    change: '+2.5%'
-  },
-  {
-    label: 'Staked Amount',
-    value: '30M',
-    description: 'Locked in tournaments',
-    change: '+5.8%'
-  },
-  {
-    label: 'Trading Volume',
-    value: '2.5M',
-    description: '24h volume',
-    change: '+12.3%'
-  }
-]
-
 const tokenFeatures = [
   {
-    title: '$DSQD Token',
+    title: '$DSG Token',
     description: 'The native token powering the DigiSquid Games ecosystem.',
     details: [
       'Solana SPL Token',
+      'Cross-game utility',
       'Tournament entry fees',
-      'Reward distribution',
-      'Governance rights'
+      'Alliance staking',
+      'Governance rights',
+      'Resource trading'
     ],
     href: '/docs/token-economics/token'
   },
   {
     title: 'Reward System',
-    description: 'Dynamic reward mechanisms for tournament participation and victories.',
+    description: 'Multi-layered reward mechanisms across all game modes.',
     details: [
       'Tournament prizes',
-      'Survival rewards',
-      'Achievement bonuses',
-      'Staking returns'
+      'Alliance bonuses',
+      'Resource trading fees',
+      'Achievement rewards',
+      'Staking returns',
+      'Referral benefits'
     ],
     href: '/docs/token-economics/rewards'
-  },
-  {
-    title: 'Economy Metrics',
-    description: 'Real-time analytics and insights into the DigiSquid economy.',
-    details: [
-      'Market analysis',
-      'User statistics',
-      'Transaction data',
-      'Growth metrics'
-    ],
-    href: '/docs/token-economics/metrics'
   }
 ]
 
 const tokenDistribution = [
-  { category: 'Tournament Rewards', percentage: 40 },
-  { category: 'Community Treasury', percentage: 25 },
-  { category: 'Team & Development', percentage: 20 },
-  { category: 'Marketing', percentage: 10 },
-  { category: 'Advisors', percentage: 5 }
+  { category: 'Team', percentage: 25, color: '#FF6B6B' },
+  { category: 'Advisors & Partners', percentage: 20, color: '#4ECDC4' },
+  { category: 'Community & Ecosystem', percentage: 15, color: '#45B7D1' },
+  { category: 'Marketing & Operations', percentage: 15, color: '#96CEB4' },
+  { category: 'Future Development', percentage: 5, color: '#FFEEAD' },
+  { category: 'Public Circulation', percentage: 20, color: '#D4A5A5' }
 ]
+
+const PieChart = () => {
+  let cumulativePercentage = 0
+  
+  return (
+    <svg viewBox="0 0 100 100" className="transform -rotate-90">
+      {tokenDistribution.map((item, index) => {
+        const startAngle = (cumulativePercentage * 360) / 100
+        const endAngle = ((cumulativePercentage + item.percentage) * 360) / 100
+        const x1 = 50 + 40 * Math.cos((startAngle * Math.PI) / 180)
+        const y1 = 50 + 40 * Math.sin((startAngle * Math.PI) / 180)
+        const x2 = 50 + 40 * Math.cos((endAngle * Math.PI) / 180)
+        const y2 = 50 + 40 * Math.sin((endAngle * Math.PI) / 180)
+        const largeArcFlag = item.percentage > 50 ? 1 : 0
+
+        cumulativePercentage += item.percentage
+
+        return (
+          <motion.path
+            key={item.category}
+            d={`M 50 50 L ${x1} ${y1} A 40 40 0 ${largeArcFlag} 1 ${x2} ${y2} Z`}
+            fill={item.color}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            className="hover:opacity-80 transition-opacity cursor-pointer"
+          />
+        )
+      })}
+    </svg>
+  )
+}
 
 export default function TokenEconomicsPage() {
   return (
@@ -101,56 +100,63 @@ export default function TokenEconomicsPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          $DSQD is the native token of DigiSquid Games, powering our tournament 
+          $DSG is the native token of DigiSquid Games, powering our tournament 
           system and reward mechanisms on the Solana blockchain.
         </motion.p>
       </div>
 
-      {/* Token Metrics */}
+      {/* Token Distribution */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="grid grid-cols-1 md:grid-cols-4 gap-6"
+        className="flex items-start justify-between p-6 border border-gray-800 rounded-xl"
       >
-        {tokenMetrics.map((metric) => (
-          <div
-            key={metric.label}
-            className="p-4 border border-gray-800 rounded-lg bg-gray-900/50"
-          >
-            <div className="flex justify-between items-start mb-2">
-              <span className="text-sm text-gray-400">{metric.label}</span>
-              <span className={`text-xs ${
-                metric.change.startsWith('+') ? 'text-green-500' : 'text-red-500'
-              }`}>
-                {metric.change}
+        <div className="w-64">
+          <h2 className="text-2xl font-semibold mb-4">Token Distribution</h2>
+          <PieChart />
+        </div>
+        <div className="flex-1 ml-8 space-y-2">
+          {tokenDistribution.map((item, index) => (
+            <motion.div
+              key={item.category}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 + index * 0.1 }}
+              className="flex items-center justify-between"
+            >
+              <div className="flex items-center">
+                <div
+                  className="w-3 h-3 rounded-full mr-2"
+                  style={{ backgroundColor: item.color }}
+                />
+                <span className="text-sm text-gray-400">{item.category}</span>
+              </div>
+              <span className="text-sm font-mono text-squid-pink">
+                {item.percentage}%
               </span>
-            </div>
-            <div className="text-2xl font-mono text-squid-pink mb-1">
-              {metric.value}
-            </div>
-            <div className="text-xs text-gray-500">{metric.description}</div>
-          </div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
 
-      {/* Token Features */}
+      {/* Core Components */}
       <div className="space-y-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.7 }}
           className="text-2xl font-semibold"
         >
           Core Components
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {tokenFeatures.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
+              transition={{ delay: 0.8 + index * 0.1 }}
             >
               <Link
                 href={feature.href}
@@ -175,60 +181,6 @@ export default function TokenEconomicsPage() {
           ))}
         </div>
       </div>
-
-      {/* Token Distribution */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        className="p-6 border border-gray-800 rounded-xl space-y-6"
-      >
-        <h2 className="text-2xl font-semibold">Token Distribution</h2>
-        <div className="space-y-4">
-          {tokenDistribution.map((item) => (
-            <div key={item.category} className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-400">{item.category}</span>
-                <span className="text-squid-pink font-mono">{item.percentage}%</span>
-              </div>
-              <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${item.percentage}%` }}
-                  transition={{ duration: 1, delay: 0.9 }}
-                  className="h-full bg-squid-pink rounded-full"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Contract Information */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.1 }}
-        className="p-6 border border-gray-800 rounded-xl space-y-4"
-      >
-        <h2 className="text-xl font-semibold">Contract Information</h2>
-        <div className="space-y-4">
-          <div className="flex items-center space-x-4">
-            <span className="text-gray-400">Token Address:</span>
-            <code className="text-sm bg-gray-900/50 px-3 py-1 rounded-lg text-squid-pink">
-              DSQD...xyz789
-            </code>
-          </div>
-          <div className="flex items-center space-x-4">
-            <span className="text-gray-400">Token Standard:</span>
-            <span className="text-sm text-gray-300">Solana SPL Token</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <span className="text-gray-400">Decimals:</span>
-            <span className="text-sm text-gray-300">9</span>
-          </div>
-        </div>
-      </motion.div>
     </div>
   )
 }

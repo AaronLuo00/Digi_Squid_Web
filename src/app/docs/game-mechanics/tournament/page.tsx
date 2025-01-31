@@ -11,7 +11,7 @@ const tournamentStages = [
       'Top 100 players qualify',
       'AI difficulty: Moderate',
       'Duration: 24 hours',
-      'Entry fee: 100 $DSQD'
+      'Entry fee: 100 $DSG'
     ]
   },
   {
@@ -39,10 +39,10 @@ const tournamentStages = [
 ]
 
 const rewardStructure = [
-  { position: '1st', reward: '3,750 $DSQD', color: 'text-yellow-500' },
-  { position: '2nd', reward: '1,875 $DSQD', color: 'text-gray-300' },
-  { position: '3rd', reward: '937 $DSQD', color: 'text-amber-600' },
-  { position: '4th-10th', reward: '134 $DSQD each', color: 'text-gray-400' }
+  { position: '1st', reward: '3,750 $DSG', color: 'text-yellow-500' },
+  { position: '2nd', reward: '1,875 $DSG', color: 'text-gray-300' },
+  { position: '3rd', reward: '937 $DSG', color: 'text-amber-600' },
+  { position: '4th-10th', reward: '134 $DSG each', color: 'text-gray-400' }
 ]
 
 export default function TournamentPage() {

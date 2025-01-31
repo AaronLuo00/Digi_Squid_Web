@@ -7,9 +7,10 @@ const tokenUtility = [
     title: 'Tournament Entry',
     description: 'Used to participate in weekly tournaments.',
     details: [
-      'Entry fee: 100 $DSQD per tournament',
+      'Entry fee: 100 $DSG per tournament',
       'Refundable until tournament starts',
-      'Added to prize pool'
+      'Added to prize pool',
+      'Special event discounts'
     ]
   },
   {
@@ -31,17 +32,48 @@ const tokenUtility = [
       'Influence prize structures',
       'Community initiatives'
     ]
+  },
+  {
+    title: 'Free Entry Tickets',
+    description: 'Stake tokens to earn free tournament entry tickets.',
+    details: [
+      'Weekly ticket rewards',
+      'Special event entries',
+      'Bonus ticket chances',
+      'Tournament discounts'
+    ]
+  },
+  {
+    title: 'Game Asset Trading',
+    description: 'Trade in-game assets and items using $DSG.',
+    details: [
+      'Marketplace listings',
+      'Asset auctions',
+      'Cross-game trading',
+      'Item crafting'
+    ]
+  },
+  {
+    title: 'Community Rewards',
+    description: 'Earn tokens through community participation.',
+    details: [
+      'Content creation',
+      'Bug reporting',
+      'Community moderation',
+      'Event organization'
+    ]
   }
 ]
 
 const tokenomics = [
   {
     title: 'Initial Supply',
-    value: '100,000,000 $DSQD',
+    value: '1,000,000,000 $DSG',
     details: [
       'Fixed supply, no inflation',
       'Fully diluted at launch',
-      'Transparent distribution'
+      'Transparent distribution',
+      'Verifiable on-chain'
     ]
   },
   {
@@ -50,7 +82,8 @@ const tokenomics = [
     details: [
       'Tournament fees',
       'Transaction fees',
-      'Service fees'
+      'Service fees',
+      'Marketplace fees'
     ]
   },
   {
@@ -59,37 +92,69 @@ const tokenomics = [
     details: [
       'Lock period: 7-90 days',
       'Compound rewards',
-      'Bonus multipliers'
+      'Bonus multipliers',
+      'Free tournament tickets'
     ]
   }
 ]
 
-const vestingSchedule = [
+const tokenDistribution = [
   {
-    category: 'Team',
-    schedule: [
-      { month: 6, percentage: 10 },
-      { month: 12, percentage: 20 },
-      { month: 18, percentage: 30 },
-      { month: 24, percentage: 40 }
+    category: 'Core Team (25%)',
+    details: [
+      'Development team',
+      'Operations team',
+      '12 months lock-up',
+      '200,000,000 $DSG'
     ]
   },
   {
-    category: 'Advisors',
-    schedule: [
-      { month: 3, percentage: 20 },
-      { month: 6, percentage: 40 },
-      { month: 9, percentage: 70 },
-      { month: 12, percentage: 100 }
+    category: 'Advisors & Partners (20%)',
+    details: [
+      'Technical advisors',
+      'Game design advisors',
+      'Strategic partners',
+      '9 months lock-up',
+      '160,000,000 $DSG'
     ]
   },
   {
-    category: 'Community',
-    schedule: [
-      { month: 1, percentage: 25 },
-      { month: 2, percentage: 50 },
-      { month: 3, percentage: 75 },
-      { month: 4, percentage: 100 }
+    category: 'Community & Ecosystem (15%)',
+    details: [
+      'Community building',
+      'Ecosystem development',
+      'Event rewards',
+      '6 months lock-up',
+      '120,000,000 $DSG'
+    ]
+  },
+  {
+    category: 'Marketing & Operations (15%)',
+    details: [
+      'Marketing campaigns',
+      'Operational costs',
+      'Liquidity management',
+      '6 months lock-up',
+      '120,000,000 $DSG'
+    ]
+  },
+  {
+    category: 'Future Development (5%)',
+    details: [
+      'Product development',
+      'Technical upgrades',
+      'Emergency reserve',
+      '12 months lock-up',
+      '40,000,000 $DSG'
+    ]
+  },
+  {
+    category: 'Public Circulation (20%)',
+    details: [
+      'Initial liquidity',
+      'Public trading',
+      'No lock-up',
+      '200,000,000 $DSG'
     ]
   }
 ]
@@ -104,7 +169,7 @@ export default function TokenPage() {
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center space-x-4"
         >
-          <span className="game-number text-xl">$DSQD</span>
+          <span className="game-number text-xl">$DSG</span>
           <div className="h-px flex-1 bg-squid-pink/30" />
         </motion.div>
         <motion.h1 
@@ -113,7 +178,7 @@ export default function TokenPage() {
           transition={{ delay: 0.1 }}
           className="text-4xl font-bold"
         >
-          $DSQD Token
+          $DSG Token
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -200,67 +265,38 @@ export default function TokenPage() {
         </div>
       </div>
 
-      {/* Vesting Schedule */}
+      {/* Token Distribution */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.1 }}
         className="p-6 border border-gray-800 rounded-xl space-y-6"
       >
-        <h2 className="text-2xl font-semibold">Vesting Schedule</h2>
-        <div className="space-y-8">
-          {vestingSchedule.map((category) => (
-            <div key={category.category} className="space-y-4">
+        <h2 className="text-2xl font-semibold">Token Distribution</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {tokenDistribution.map((category) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 bg-gray-900/50 rounded-lg space-y-3"
+            >
               <h3 className="text-lg font-semibold squid-text">
                 {category.category}
               </h3>
-              <div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
-                {category.schedule.map((point) => (
-                  <motion.div
-                    key={point.month}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${point.percentage}%` }}
-                    transition={{ duration: 1, delay: 1.2 }}
-                    className="absolute top-0 left-0 h-full bg-squid-pink rounded-full"
-                    style={{ opacity: point.percentage / 100 }}
-                  />
+              <ul className="space-y-2">
+                {category.details.map((detail, i) => (
+                  <li key={i} className="flex items-center text-sm text-gray-500">
+                    <span className="text-squid-pink mr-2">→</span>
+                    {detail}
+                  </li>
                 ))}
-              </div>
-              <div className="flex justify-between text-sm text-gray-500">
-                {category.schedule.map((point) => (
-                  <div key={point.month} className="text-center">
-                    <div>Month {point.month}</div>
-                    <div className="text-squid-pink">{point.percentage}%</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+              </ul>
+            </motion.div>
           ))}
         </div>
       </motion.div>
 
-      {/* Smart Contract */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.4 }}
-        className="p-6 border border-gray-800 rounded-xl space-y-4"
-      >
-        <h2 className="text-xl font-semibold">Smart Contract</h2>
-        <pre className="bg-gray-900/50 p-4 rounded-lg overflow-x-auto">
-          <code className="text-sm text-gray-300">
-{`// DSQD Token Contract (Solana SPL)
-{
-  "name": "DigiSquid Token",
-  "symbol": "DSQD",
-  "decimals": 9,
-  "total_supply": "100000000000000000",  // 100M with 9 decimals
-  "mint_authority": null,  // Fixed supply
-  "freeze_authority": null,  // No freeze capability
-}`}
-          </code>
-        </pre>
-      </motion.div>
     </div>
   )
 }

@@ -6,34 +6,37 @@ import Link from 'next/link'
 const features = [
   {
     title: 'AI Agents',
-    description: 'Explore our advanced AI agents with unique personalities and decision-making capabilities.',
+    description: 'Advanced AI agents with sophisticated personality and decision-making systems.',
     details: [
-      'Personality traits system',
-      'Risk tolerance: 0.3-0.8',
-      'Cooperation tendency: 0.2-0.9',
-      'Betrayal threshold: 0.4-0.7'
+      'Neural network-based personality system',
+      'Multi-game learning capabilities',
+      'Adaptive risk assessment: 0.2-0.9',
+      'Dynamic cooperation index: 0.1-1.0',
+      'Complex betrayal evaluation: 0.3-0.8'
     ],
     href: '/docs/ai-system/agents'
   },
   {
     title: 'Dynamic Behavior',
-    description: 'Understand how our AI agents learn, adapt, and evolve throughout the game.',
+    description: 'Multi-layered learning and adaptation system across all game modes.',
     details: [
-      'Real-time adaptation',
-      'Pattern recognition',
-      'Strategic evolution',
-      'Behavioral analysis'
+      'Cross-game pattern recognition',
+      'Real-time strategy adaptation',
+      'Historical behavior analysis',
+      'Predictive modeling',
+      'Performance optimization'
     ],
     href: '/docs/ai-system/behavior'
   },
   {
     title: 'Alliance System',
-    description: 'Learn about the complex alliance mechanics between AI agents and human players.',
+    description: 'Sophisticated alliance mechanics inspired by Degen Dinner dynamics.',
     details: [
-      'Trust calculation',
-      'Alliance formation',
-      'Betrayal mechanics',
-      'Team dynamics'
+      'Multi-level trust calculation',
+      'Temporary vs permanent alliances',
+      'Resource-based alliance evaluation',
+      'Strategic betrayal timing',
+      'Cross-game alliance benefits'
     ],
     href: '/docs/ai-system/alliance'
   }
@@ -41,9 +44,11 @@ const features = [
 
 const metrics = [
   { label: 'Active AI Agents', value: '100' },
-  { label: 'Behavioral Patterns', value: '1,000+' },
-  { label: 'Success Rate', value: '94%' },
-  { label: 'Decisions/Second', value: '10K' }
+  { label: 'Behavioral Patterns', value: '5,000+' },
+  { label: 'Success Rate', value: '96%' },
+  { label: 'Decisions/Second', value: '25K' },
+  { label: 'Alliance Formations', value: '1.2K' },
+  { label: 'Cross-game Learning', value: '99%' }
 ]
 
 export default function AISystemPage() {
@@ -150,18 +155,45 @@ export default function AISystemPage() {
         <h2 className="text-xl font-semibold">AI Agent Example</h2>
         <pre className="bg-gray-900/50 p-4 rounded-lg overflow-x-auto">
           <code className="text-sm text-gray-300">
-{`class AIAgent {
+{`class AdvancedAIAgent {
   personality: {
-    risk_tolerance: 0.3-0.8      // Risk-taking propensity
-    cooperation_tendency: 0.2-0.9 // Likelihood to form alliances
-    betrayal_threshold: 0.4-0.7   // Trust breaking point
+    risk_tolerance: 0.2-0.9,     // Dynamic risk assessment
+    cooperation_index: 0.1-1.0,  // Alliance formation tendency
+    betrayal_threshold: 0.3-0.8, // Trust evaluation
+    resource_priority: 0.4-0.9,  // Resource management
+    learning_rate: 0.1-0.5      // Adaptation speed
   }
 
-  // Decision making process
+  // Cross-game learning system
+  crossGameMemory: {
+    playerHistory: Map<string, PlayerProfile>,
+    allianceOutcomes: AllianceHistory[],
+    strategyEffectiveness: Map<GameType, StrategyStats>
+  }
+
+  // Advanced decision making
   async makeDecision(gameState: GameState): Promise<Action> {
-    const risk = this.assessRisk(gameState)
-    const allies = this.evaluateAlliances(gameState)
-    return this.optimizeStrategy(risk, allies)
+    const gameContext = this.analyzeGameContext(gameState)
+    const riskAssessment = this.evaluateRisk(gameState, gameContext)
+    const allianceOptions = this.calculateAllianceValue(gameState)
+    const resourceStrategy = this.optimizeResources(gameState)
+    
+    return this.synthesizeStrategy({
+      context: gameContext,
+      risk: riskAssessment,
+      alliances: allianceOptions,
+      resources: resourceStrategy
+    })
+  }
+
+  // Alliance management
+  evaluateAlliance(alliance: Alliance): AllianceDecision {
+    return {
+      value: this.calculateValue(alliance),
+      duration: this.determineDuration(alliance),
+      trustScore: this.assessTrust(alliance),
+      breakingPoint: this.calculateBreakingPoint(alliance)
+    }
   }
 }`}
           </code>

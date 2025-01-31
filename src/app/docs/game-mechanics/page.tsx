@@ -6,32 +6,57 @@ import Link from 'next/link'
 const gameModes = [
   {
     number: '456',
-    title: 'Red Light, Green Light',
-    description: 'Test your reflexes against our AI movement prediction system.',
+    title: 'Red Light, Green Light X',
+    description: 'Test your reflexes against our advanced AI movement prediction system.',
     details: [
-      'AI-powered movement detection',
-      'Progressive difficulty scaling',
-      'Real-time reaction analysis'
+      'Neural network-based movement detection',
+      'Dynamic difficulty adaptation',
+      'Real-time pattern analysis',
+      'Multi-player synchronization'
     ]
   },
   {
     number: '123',
-    title: 'Tug of War',
-    description: 'Form alliances or compete solo in team-based challenges.',
+    title: 'Tug of War Alpha',
+    description: 'Form alliances and compete in strategic team-based challenges.',
     details: [
-      'Dynamic team formation',
-      'Strategic alliance mechanics',
-      'Betrayal risk assessment'
+      'Dynamic force mechanics',
+      'Team coordination system',
+      'Real-time strategy adaptation',
+      'Alliance management'
     ]
   },
   {
     number: '067',
-    title: 'Marble Game',
-    description: 'Strategic resource management and decision making.',
+    title: 'Marble Mayhem',
+    description: 'Master resource management with innovative betting mechanics.',
     details: [
-      'Resource optimization',
-      'Risk-reward calculations',
-      'Multi-round strategy'
+      'Dynamic betting system',
+      'Real-time interference',
+      'Multi-round strategy',
+      'Resource optimization'
+    ]
+  },
+  {
+    number: '218',
+    title: 'Cookie Smash',
+    description: 'Strategic shape-cutting challenge with point-based mechanics.',
+    details: [
+      'Precision cutting system',
+      'Speed-accuracy balance',
+      'Pattern recognition',
+      'Competitive interference'
+    ]
+  },
+  {
+    number: '199',
+    title: 'Degen Dinner',
+    description: 'Complex resource management and alliance formation system.',
+    details: [
+      'Multi-table dynamics',
+      'Resource trading system',
+      'Alliance formation',
+      'Betrayal mechanics'
     ]
   }
 ]
@@ -73,9 +98,9 @@ export default function GameMechanicsPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="p-6 border border-squid-pink/20 rounded-xl bg-gray-900/50 backdrop-blur-sm"
+        className="p-6 border border-squid-pink/20 rounded-xl bg-gray-900/50 backdrop-blur-sm space-y-6"
       >
-        <h2 className="text-xl font-semibold mb-4">Tournament Structure</h2>
+        <h2 className="text-xl font-semibold">Tournament Structure</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-2">
             <div className="text-2xl font-mono text-squid-pink">100</div>
@@ -87,7 +112,45 @@ export default function GameMechanicsPage() {
           </div>
           <div className="space-y-2">
             <div className="text-2xl font-mono text-squid-pink">7,500</div>
-            <div className="text-sm text-gray-400">$DSQD Prize Pool</div>
+            <div className="text-sm text-gray-400">$DSG Prize Pool</div>
+          </div>
+        </div>
+        
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">Tournament Phases</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border border-gray-800 rounded-lg">
+              <h4 className="font-semibold mb-2">Qualification Round</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• Individual game performance tracking</li>
+                <li>• Top 50% players advance</li>
+                <li>• Minimum score requirements</li>
+              </ul>
+            </div>
+            <div className="p-4 border border-gray-800 rounded-lg">
+              <h4 className="font-semibold mb-2">Alliance Formation</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• Strategic team building</li>
+                <li>• Resource sharing options</li>
+                <li>• Trust score system</li>
+              </ul>
+            </div>
+            <div className="p-4 border border-gray-800 rounded-lg">
+              <h4 className="font-semibold mb-2">Main Tournament</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• Cross-game challenges</li>
+                <li>• Dynamic difficulty scaling</li>
+                <li>• Real-time leaderboard</li>
+              </ul>
+            </div>
+            <div className="p-4 border border-gray-800 rounded-lg">
+              <h4 className="font-semibold mb-2">Finals</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• Elite player showdown</li>
+                <li>• Special game modes</li>
+                <li>• Live streaming events</li>
+              </ul>
+            </div>
           </div>
         </div>
       </motion.div>

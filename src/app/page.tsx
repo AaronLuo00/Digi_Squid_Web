@@ -3,47 +3,62 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Header from '@/components/Header'
-import GameShapes from '@/components/decorative/GameShapes'
+import CyberBackground from '@/components/decorative/CyberBackground'
+import FloatingTokens from '@/components/decorative/FloatingTokens'
+import RedLightGreenLightIcon from '@/components/icons/RedLightGreenLightIcon'
+import TugOfWarIcon from '@/components/icons/TugOfWarIcon'
+import MarbleIcon from '@/components/icons/MarbleIcon'
+import CookieIcon from '@/components/icons/CookieIcon'
+import DinnerIcon from '@/components/icons/DinnerIcon'
 
 export default function Home() {
   const features = [
     {
       number: '456',
-      title: 'Red Light, Green Light',
-      description: 'AI-powered movement prediction system. Test your reflexes against intelligent agents that learn and adapt to player behavior patterns.',
-      icon: '🚦',
-      tokenReward: '1000 $DSQD',
-      players: '234'
+      title: 'Red Light, Green Light X',
+      description: 'Test your reflexes against AI agents that learn and adapt to player patterns. Real-time movement prediction and dynamic difficulty adjustment.',
+      icon: RedLightGreenLightIcon,
+      tokenReward: '1000 $DSG',
+      players: 'Registration Open'
     },
     {
       number: '123',
-      title: 'Dynamic Team Challenges',
-      description: 'Form alliances or compete solo in team-based survival games. Every agent has unique traits that influence their cooperation or betrayal tendencies.',
-      icon: '🤝',
-      tokenReward: '2000 $DSQD',
-      players: '567'
+      title: 'Tug of War ALPHA',
+      description: 'Form alliances and compete in team-based challenges. Each player\'s decision affects the entire team\'s outcome. Choose between cooperation and betrayal.',
+      icon: TugOfWarIcon,
+      tokenReward: '2000 $DSG',
+      players: 'Registration Open'
     },
     {
       number: '067',
-      title: 'Strategic Resource Management',
-      description: 'Manage your in-game resources wisely. Each decision could be the difference between survival and elimination.',
-      icon: '💎',
-      tokenReward: '1500 $DSQD',
-      players: '189'
+      title: 'Marble Mayhem',
+      description: 'Master the art of resource management with our innovative point-based betting system. Multiple strategies and real-time interference mechanics.',
+      icon: MarbleIcon,
+      tokenReward: '1500 $DSG',
+      players: 'Registration Open'
     },
     {
       number: '218',
-      title: 'Adaptive Difficulty System',
-      description: 'The game evolves with you. AI agents become more challenging as you progress, creating an ever-increasing test of skill and strategy.',
-      icon: '🎯',
-      tokenReward: '3000 $DSQD',
-      players: '345'
+      title: 'Cookie Smash',
+      description: 'Strategic shape-cutting challenge with point-based actions. Balance between accuracy and speed while countering opponent interference.',
+      icon: CookieIcon,
+      tokenReward: '1800 $DSG',
+      players: 'Registration Open'
+    },
+    {
+      number: '199',
+      title: 'Degen Dinner',
+      description: 'Complex resource management and alliance system. Form temporary or strategic alliances, trade resources, and participate in critical voting phases.',
+      icon: DinnerIcon,
+      tokenReward: '2500 $DSG',
+      players: 'Registration Open'
     }
   ]
 
   return (
     <main className="min-h-screen bg-primary overflow-hidden">
-      <GameShapes />
+      <CyberBackground />
+      <FloatingTokens />
       <Header />
       
       {/* Split Screen Hero Section */}
@@ -98,11 +113,11 @@ export default function Home() {
                 <div className="flex flex-col space-y-4">
                   <div className="flex items-center space-x-4">
                     <span className="text-squid-pink font-mono">Total Prize Pool:</span>
-                    <span className="token-amount">7500 $DSQD</span>
+                    <span className="token-amount">8800 $DSG</span>
                   </div>
                   <div className="flex items-center space-x-4">
                     <span className="text-squid-pink font-mono">Players Online:</span>
-                    <span className="text-white font-mono text-xl">1,234</span>
+                    <span className="text-white font-mono text-xl">Registration Phase</span>
                   </div>
                 </div>
               </motion.div>
@@ -162,33 +177,38 @@ export default function Home() {
                       transition={{ delay: 0.2 * index + 0.8 }}
                       className="game-card p-6 rounded-xl relative group cursor-pointer"
                     >
-                      <div className="flex items-start space-x-4">
-                        <div className="text-4xl group-hover:scale-110 transition-transform">
-                          {feature.icon}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-xl font-semibold squid-text truncate">
-                            {feature.title}
-                          </h3>
-                          <p className="text-gray-400 mt-2 text-sm line-clamp-2">
-                            {feature.description}
-                          </p>
-                          <div className="mt-3 flex items-center space-x-4">
-                            <span className="text-squid-pink/70 text-xs font-mono">
-                              Players: {feature.players}
-                            </span>
-                            <span className="token-amount text-sm">
-                              {feature.tokenReward}
-                            </span>
+                      <Link 
+                        href={`/docs/games/${feature.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                        className="block"
+                      >
+                        <div className="flex items-start space-x-4">
+                          <div className="text-4xl group-hover:scale-110 transition-transform">
+                            <feature.icon size={40} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-xl font-semibold squid-text truncate">
+                              {feature.title}
+                            </h3>
+                            <p className="text-gray-400 mt-2 text-sm line-clamp-2">
+                              {feature.description}
+                            </p>
+                            <div className="mt-3 flex items-center space-x-4">
+                              <span className="text-squid-pink/70 text-xs font-mono">
+                                Players: {feature.players}
+                              </span>
+                              <span className="token-amount text-sm">
+                                {feature.tokenReward}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <span className="game-number font-mono">{feature.number}</span>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <span className="game-number font-mono">{feature.number}</span>
+                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <span className="text-squid-pink text-sm font-mono tracking-wider">ENTER GAME →</span>
                         </div>
-                      </div>
-                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span className="text-squid-pink text-sm font-mono tracking-wider">ENTER GAME →</span>
-                      </div>
+                      </Link>
                     </motion.div>
                   ))}
                 </div>

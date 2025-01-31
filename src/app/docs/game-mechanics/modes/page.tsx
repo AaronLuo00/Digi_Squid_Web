@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const gameModes = [
   {
     number: '456',
-    title: 'Red Light, Green Light',
+    title: 'Red Light, Green Light X',
     description: 'A test of reflexes and timing against AI movement prediction.',
     mechanics: [
       {
@@ -29,7 +29,7 @@ const gameModes = [
   },
   {
     number: '123',
-    title: 'Tug of War',
+    title: 'Tug of War Alpha',
     description: 'Strategic team-based competition with dynamic alliances.',
     mechanics: [
       {
@@ -53,7 +53,7 @@ const gameModes = [
   },
   {
     number: '067',
-    title: 'Marble Game',
+    title: 'Marble Mayhem',
     description: 'Resource management and strategic decision-making challenge.',
     mechanics: [
       {
@@ -73,6 +73,54 @@ const gameModes = [
       'Track opponent patterns',
       'Manage resources carefully',
       'Adapt to AI personalities'
+    ]
+  },
+  {
+    number: '218',
+    title: 'Cookie Smash',
+    description: 'Strategic shape-cutting challenge with point-based mechanics.',
+    mechanics: [
+      {
+        title: 'Precision Cutting',
+        description: 'Players must cut shapes with exact precision to maximize points.'
+      },
+      {
+        title: 'Speed vs Accuracy',
+        description: 'Balance between fast execution and maintaining cutting accuracy.'
+      },
+      {
+        title: 'Pattern Recognition',
+        description: 'Identify optimal cutting paths while avoiding structural weaknesses.'
+      }
+    ],
+    strategy: [
+      'Study shape patterns carefully',
+      'Practice precision movements',
+      'Adapt to time pressure'
+    ]
+  },
+  {
+    number: '199',
+    title: 'Degen Dinner',
+    description: 'Complex resource management and alliance formation system.',
+    mechanics: [
+      {
+        title: 'Multi-table Dynamics',
+        description: 'Players navigate between multiple dinner tables, each with unique opportunities.'
+      },
+      {
+        title: 'Resource Trading',
+        description: 'Strategic trading of food and information between players and tables.'
+      },
+      {
+        title: 'Alliance Formation',
+        description: 'Form temporary or permanent alliances to maximize survival chances.'
+      }
+    ],
+    strategy: [
+      'Build strategic partnerships',
+      'Time resource exchanges',
+      'Maintain table presence'
     ]
   }
 ]

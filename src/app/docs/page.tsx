@@ -2,24 +2,27 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import GameMechanicsIcon from '@/components/icons/nav/GameMechanicsIcon'
+import AISystemIcon from '@/components/icons/nav/AISystemIcon'
+import TokenEconomicsIcon from '@/components/icons/nav/TokenEconomicsIcon'
 
 const features = [
   {
     title: 'Game Mechanics',
     description: 'Learn about our tournament system, game modes, and victory conditions.',
-    icon: '🎮',
+    icon: GameMechanicsIcon,
     href: '/docs/game-mechanics'
   },
   {
     title: 'AI System',
     description: 'Explore our advanced AI agents, their behavior patterns, and alliance dynamics.',
-    icon: '🤖',
+    icon: AISystemIcon,
     href: '/docs/ai-system'
   },
   {
     title: 'Token Economics',
-    description: 'Understand $DSQD token utility, reward mechanisms, and economic model.',
-    icon: '💎',
+    description: 'Understand $DSG token utility, reward mechanisms, and economic model.',
+    icon: TokenEconomicsIcon,
     href: '/docs/token-economics'
   }
 ]
@@ -88,9 +91,9 @@ export default function DocsPage() {
               href={feature.href}
               className="block p-6 border border-gray-800 rounded-xl hover:border-squid-pink/50 transition-colors group"
             >
-              <span className="text-3xl mb-4 block transform group-hover:scale-110 transition-transform">
-                {feature.icon}
-              </span>
+              <div className="mb-4 block transform group-hover:scale-110 transition-transform">
+                <feature.icon size={48} />
+              </div>
               <h3 className="text-lg font-semibold mb-2 squid-text">{feature.title}</h3>
               <p className="text-gray-400 text-sm">{feature.description}</p>
             </Link>
