@@ -3,7 +3,6 @@
 import { motion, Variants } from 'framer-motion'
 
 const Logo = () => {
-  const iconSize = 28
   const strokeWidth = 2
   const color = "#FF0266"
 

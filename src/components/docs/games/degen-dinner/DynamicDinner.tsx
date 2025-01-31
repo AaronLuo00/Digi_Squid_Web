@@ -245,7 +245,7 @@ const DynamicDinner = () => {
       clearInterval(removeInterval)
       clearInterval(tradeInterval)
     }
-  }, [resources.length, containerSize, isClient, getRandomPosition])
+  }, [resources, containerSize, isClient, getRandomPosition])
 
   const getResourceColor = (type: string) => {
     switch (type) {
@@ -399,7 +399,7 @@ const DynamicDinner = () => {
         </svg>
 
         <svg className="absolute inset-0 pointer-events-none">
-          {alliances.map((alliance, index) => {
+          {alliances.map((alliance) => {
             if (alliance.members.length < 2) return null
 
             return (
