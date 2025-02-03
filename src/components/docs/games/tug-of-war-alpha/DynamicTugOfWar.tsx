@@ -18,7 +18,13 @@ const DynamicTugOfWar = () => {
   const [teamBStrength, setTeamBStrength] = useState(0.75) // Initial strength
   const [teamAStrategy, setTeamAStrategy] = useState<Strategy>('cooperate')
   const [teamBStrategy, setTeamBStrategy] = useState<Strategy>('cooperate')
+  const [isClient, setIsClient] = useState(false)
   const ropeControls = useAnimation()
+
+  // Set client-side flag
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   
   // Calculate strength modifiers based on strategies
   const getStrengthModifier = (ownStrategy: Strategy, opponentStrategy: Strategy) => {
@@ -73,7 +79,21 @@ const DynamicTugOfWar = () => {
     }, '')
   }, [ropePoints])
   
+  // Rope animation effect
   useEffect(() => {
+    if (!isClient) return
+
+    ropeControls.start({
+      pathLength: 1,
+      pathOffset: 0,
+      transition: { duration: 0.5, ease: "easeInOut" }
+    })
+  }, [ropeControls, position, isClient])
+
+  // Game logic effects
+  useEffect(() => {
+    if (!isClient) return
+
     // Simulate team strength changes
     const strengthInterval = setInterval(() => {
       setTeamAStrength(Math.random() * 0.5 + 0.75)
@@ -86,7 +106,7 @@ const DynamicTugOfWar = () => {
       setTeamBStrategy(prev => getRandomStrategy(prev, teamAStrategy))
     }, STRATEGY_CHANGE_INTERVAL)
 
-    // Update rope position and animation
+    // Update rope position
     const positionInterval = setInterval(() => {
       setPosition(prev => {
         // Apply strategy modifiers to strength
@@ -97,13 +117,6 @@ const DynamicTugOfWar = () => {
         const newPos = prev + pull
         return Math.max(20, Math.min(80, newPos))
       })
-
-      // Animate rope tension
-      ropeControls.start({
-        pathLength: 1,
-        pathOffset: 0,
-        transition: { duration: 0.5, ease: "easeInOut" }
-      })
     }, 50)
 
     return () => {
@@ -111,7 +124,7 @@ const DynamicTugOfWar = () => {
       clearInterval(strategyInterval)
       clearInterval(positionInterval)
     }
-  }, [teamAStrength, teamBStrength, teamAStrategy, teamBStrategy, ropeControls])
+  }, [isClient, teamAStrength, teamBStrength, teamAStrategy, teamBStrategy])
 
   return (
     <div className="relative h-full w-full bg-gray-900/50 backdrop-blur overflow-hidden">

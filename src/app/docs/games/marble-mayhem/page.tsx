@@ -205,9 +205,9 @@ export default function MarbleMayhemPage() {
   return (
     <div className="min-h-screen bg-primary">
       {/* Hero Section */}
-      <section className="h-[50vh] relative overflow-hidden bg-gradient-to-b from-gray-900 to-primary">
-        <div className="absolute inset-0">
-          <div className="h-full w-full">
+      <section className="h-[600px] relative overflow-hidden bg-gradient-to-b from-gray-900 to-primary">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-full h-full">
             <DynamicMarbles />
           </div>
         </div>

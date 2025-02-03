@@ -17,6 +17,18 @@
   transform-origin: center center;
 }
 
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
 .resource-glow {
   position: absolute;
   inset: -10px;
@@ -24,6 +36,7 @@
   background: radial-gradient(circle at center, var(--glow-color) 0%, transparent 70%);
   opacity: 0.5;
   pointer-events: none;
+  animation: pulse 3s infinite ease-in-out;
 }
 
 .resource-icon {
@@ -40,6 +53,13 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
+  animation: float 3s infinite ease-in-out;
+}
+
+.resource-icon:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
 .resource-value {
@@ -53,12 +73,14 @@
 }
 
 .trading-line {
-  stroke-width: 2;
-  filter: drop-shadow(0 0 5px rgba(255, 0, 128, 0.5));
+  stroke-width: 3;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 128, 0.5));
+  opacity: 0.8;
 }
 
 .trading-particle {
-  filter: drop-shadow(0 0 3px var(--particle-color));
+  filter: drop-shadow(0 0 5px var(--particle-color));
+  mix-blend-mode: screen;
 }
 
 .grid-overlay {

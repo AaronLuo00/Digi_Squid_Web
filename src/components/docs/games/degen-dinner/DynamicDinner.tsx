@@ -49,9 +49,15 @@ interface TradingLine {
 
 const RESOURCE_SIZE = 60 // Size in pixels for resources
 const MAX_RESOURCES = 10 // Maximum number of resources
-const ADD_INTERVAL = 1500 // Add resource every 1.5 seconds
+const ADD_INTERVAL = 800 // Add resource every 0.8 seconds
 const REMOVE_INTERVAL = 5000 // Try to remove resource every 5 seconds
 const TRADE_EFFECT_DURATION = 2000 // Duration for trade completion effects
+const SPRING_CONFIG = {
+  type: "spring" as const,
+  damping: 12,
+  stiffness: 200,
+  mass: 1
+}
 
 const resourceTypes = [
   { type: '🍖', name: 'Meat' },
@@ -66,8 +72,12 @@ const resourceTypes = [
   { type: '🥘', name: 'Paella' }
 ]
 
-// Generate unique ID using timestamp and random number
-const generateId = () => `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+// Counter for generating unique IDs
+let idCounter = 0
+const generateId = (prefix: string = 'resource') => {
+  idCounter += 1
+  return `${prefix}-${Date.now()}-${idCounter}-${Math.random().toString(36).substr(2, 9)}`
+}
 
 const DynamicDinner = () => {
   const [resources, setResources] = useState<Resource[]>([])
@@ -137,7 +147,7 @@ const DynamicDinner = () => {
           return prev
         }
 
-        const id = generateId()
+        const id = generateId('resource')
         const position = getRandomPosition(id)
         return [...prev, {
           id,
@@ -195,7 +205,7 @@ const DynamicDinner = () => {
             const midY = (resource1.y + resource2.y) / 2
             
             setTradeCompletions(prev => [...prev, {
-              id: generateId(),
+              id: `trade-${resource1.id}-${resource2.id}-${Date.now()}`,
               x: midX,
               y: midY,
               color: getResourceColor(resource1.type),
@@ -300,7 +310,7 @@ const DynamicDinner = () => {
             <motion.div
               key={`resource-${resource.id}`}
               className="resource"
-              initial={{ scale: 0, opacity: 0, rotate: -180 }}
+              initial={{ scale: 0, opacity: 0, y: -50, rotate: -30 }}
               animate={{
                 x: resource.x,
                 y: resource.y,
@@ -311,14 +321,11 @@ const DynamicDinner = () => {
               exit={{
                 scale: 0,
                 opacity: 0,
-                rotate: 180,
-                transition: { duration: 0.5 }
+                y: 50,
+                rotate: 30,
+                transition: { duration: 0.5, ease: "backIn" }
               }}
-              transition={{
-                type: 'spring',
-                damping: 15,
-                stiffness: 200
-              }}
+              transition={SPRING_CONFIG}
             >
               <div
                 className="resource-glow"
@@ -357,7 +364,7 @@ const DynamicDinner = () => {
           </defs>
 
           {tradingLines.map(line => (
-            <g key={`trade-${line.source}-${line.target}`}>
+            <g key={`trade-line-${line.source}-${line.target}`}>
               <motion.line
                 className="trading-line"
                 x1={line.x1}
@@ -404,7 +411,7 @@ const DynamicDinner = () => {
 
             return (
               <AllianceEffect
-                key={`alliance-${alliance.members.map(m => m.id).join('-')}`}
+                key={`alliance-${Date.now()}-${alliance.members.map(m => m.id).join('-')}`}
                 points={alliance.members.map(m => ({ x: m.x, y: m.y }))}
                 strength={alliance.strength}
               />
