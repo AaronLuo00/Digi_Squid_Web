@@ -4,12 +4,20 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Logo from './logo/Logo'
 
+interface NavItem {
+  name: string
+  label: string
+  href: string
+  special?: boolean
+}
+
 const Header = () => {
-  const navItems = [
+  const navItems: NavItem[] = [
     { name: '001', label: 'Documentation', href: '/docs' },
     { name: '002', label: 'Community', href: 'https://t.me/+ggLFADWwS8k4MjYx' },
     { name: '003', label: 'Twitter', href: 'https://x.com/DigiSquid_tech' },
     { name: '004', label: 'GitHub', href: 'https://github.com/CohumanSpace/digimon-engine' },
+    { name: '005', label: 'GET $DSG', href: 'https://gmgn.ai/sol/token/A7WgUQYq_7LsX88bhz8KiFcEFQYcdP6xMRsiMYPUXgYMPZMUzpump', special: true },
   ]
 
   return (
@@ -47,12 +55,22 @@ const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="group relative py-2"
+                className={`group relative py-2 ${
+                  item.special ? 'font-medium nav-special' : ''
+                }`}
               >
                 <span className="game-number absolute -top-3 -left-4 opacity-50 group-hover:opacity-100 text-xs">
-                  {item.name}
+                  {item.name === '005' ? '$' : item.name}
                 </span>
-                <span className="text-gray-300 hover:text-squid-pink transition-colors duration-200 text-sm">
+                <span 
+                  className={`
+                    text-sm transition-all duration-300
+                    ${item.special 
+                      ? 'text-squid-pink hover:text-white hover:shadow-glow' 
+                      : 'text-gray-300 hover:text-squid-pink'
+                    }
+                  `}
+                >
                   {item.label}
                 </span>
               </Link>
