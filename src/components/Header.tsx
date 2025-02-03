@@ -7,8 +7,8 @@ import Logo from './logo/Logo'
 const Header = () => {
   const navItems = [
     { name: '001', label: 'Documentation', href: '/docs' },
-    { name: '002', label: 'Community', href: '#' },
-    { name: '003', label: 'Twitter', href: '#' },
+    { name: '002', label: 'Community', href: 'https://t.me/+ggLFADWwS8k4MjYx' },
+    { name: '003', label: 'Twitter', href: 'https://x.com/DigiSquid_tech' },
     { name: '004', label: 'GitHub', href: 'https://github.com/CohumanSpace/digimon-engine' },
   ]
 
