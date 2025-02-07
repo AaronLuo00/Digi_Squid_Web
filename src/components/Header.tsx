@@ -14,7 +14,7 @@ interface NavItem {
 const Header = () => {
   const navItems: NavItem[] = [
     { name: '001', label: 'Documentation', href: '/docs' },
-    { name: '002', label: 'Community', href: 'https://t.me/+ggLFADWwS8k4MjYx' },
+    { name: '002', label: 'Community', href: 'https://t.me/+j8wJ6jOYR3tjNWRl' },
     { name: '003', label: 'Twitter', href: 'https://x.com/DigiSquid_tech' },
     { name: '004', label: 'GitHub', href: 'https://github.com/CohumanSpace/digimon-engine' },
     { name: '005', label: 'GET $DSG', href: 'https://gmgn.ai/sol/token/A7WgUQYq_7LsX88bhz8KiFcEFQYcdP6xMRsiMYPUXgYMPZMUzpump', special: true },
