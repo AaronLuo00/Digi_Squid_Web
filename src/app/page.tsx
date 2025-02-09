@@ -19,7 +19,8 @@ export default function Home() {
       description: 'Test your reflexes against AI agents that learn and adapt to player patterns. Real-time movement prediction and dynamic difficulty adjustment.',
       icon: RedLightGreenLightIcon,
       tokenReward: '1000 $DSG',
-      players: 'Registration Open'
+      players: 'Registration Open',
+      entryFee: '$100 - $1000 DSG'
     },
     {
       number: '123',
@@ -27,7 +28,8 @@ export default function Home() {
       description: 'Form alliances and compete in team-based challenges. Each player\'s decision affects the entire team\'s outcome. Choose between cooperation and betrayal.',
       icon: TugOfWarIcon,
       tokenReward: '2000 $DSG',
-      players: 'Registration Open'
+      players: 'Registration Open',
+      entryFee: '$100 - $1000 DSG'
     },
     {
       number: '067',
@@ -35,7 +37,8 @@ export default function Home() {
       description: 'Master the art of resource management with our innovative point-based betting system. Multiple strategies and real-time interference mechanics.',
       icon: MarbleIcon,
       tokenReward: '1500 $DSG',
-      players: 'Registration Open'
+      players: 'Registration Open',
+      entryFee: '$100 - $1000 DSG'
     },
     {
       number: '218',
@@ -43,7 +46,8 @@ export default function Home() {
       description: 'Strategic shape-cutting challenge with point-based actions. Balance between accuracy and speed while countering opponent interference.',
       icon: CookieIcon,
       tokenReward: '1800 $DSG',
-      players: 'Registration Open'
+      players: 'Registration Open',
+      entryFee: '$100 - $1000 DSG'
     },
     {
       number: '199',
@@ -51,7 +55,8 @@ export default function Home() {
       description: 'Complex resource management and alliance system. Form temporary or strategic alliances, trade resources, and participate in critical voting phases.',
       icon: DinnerIcon,
       tokenReward: '2500 $DSG',
-      players: 'Registration Open'
+      players: 'Registration Open',
+      entryFee: '$100 - $1000 DSG'
     }
   ]
 
@@ -113,7 +118,7 @@ export default function Home() {
                 <div className="flex flex-col space-y-4">
                   <div className="flex items-center space-x-4">
                     <span className="text-squid-pink font-mono">Total Prize Pool:</span>
-                    <span className="token-amount">8800 $DSG</span>
+                    <span className="token-amount">88000 $DSG</span>
                   </div>
                   <div className="flex items-center space-x-4">
                     <span className="text-squid-pink font-mono">Players Online:</span>
@@ -193,11 +198,11 @@ export default function Home() {
                               {feature.description}
                             </p>
                             <div className="mt-3 flex items-center space-x-4">
-                              <span className="text-squid-pink/70 text-xs font-mono">
+                              <span className="text-gray-400 text-xs font-mono">
                                 Players: {feature.players}
                               </span>
-                              <span className="token-amount text-sm">
-                                {feature.tokenReward}
+                              <span className="text-squid-pink/70 text-xs font-mono">
+                                Entry Fee: {feature.entryFee}
                               </span>
                             </div>
                           </div>

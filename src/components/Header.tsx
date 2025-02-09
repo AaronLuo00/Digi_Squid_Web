@@ -41,7 +41,7 @@ const Header = () => {
             </div>
             <div className="flex items-center space-x-2">
               <span className="text-squid-pink font-mono">PRIZE POOL:</span>
-              <span className="text-white font-mono">8800 $DSG</span>
+              <span className="text-white font-mono">88000 $DSG</span>
             </div>
             <div className="flex items-center space-x-2">
               <span className="text-squid-pink font-mono">NEXT GAME:</span>
