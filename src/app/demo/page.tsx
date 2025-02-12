@@ -19,7 +19,7 @@ export default function DemoPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <span className="game-number text-xl mb-2 block">#DEMO_2024</span>
+          <span className="game-number text-xl mb-2 block">#DEMO_2025</span>
           <h1 className="text-4xl md:text-6xl font-bold squid-text mb-4">
             Experience DigiSquid
           </h1>

@@ -134,7 +134,7 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <a 
-                  href="https://github.com/yourusername/digisquid"
+                  href="https://github.com/CohumanSpace/digimon-engine"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="squid-button px-8 py-4 rounded-lg text-lg font-semibold group relative inline-flex items-center justify-center"
