@@ -67,11 +67,11 @@ export default function Home() {
       <Header />
       
       {/* Split Screen Hero Section */}
-      <section className="min-h-screen pt-20 relative split-section-bg">
+      <section className="min-h-screen pt-16 sm:pt-20 relative split-section-bg">
         {/* Left Side - Game Info */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-          <div className="relative px-8 py-12 lg:py-24 flex flex-col justify-center items-center lg:items-end">
-            <div className="max-w-xl w-full space-y-8">
+          <div className="relative px-4 sm:px-8 py-8 sm:py-12 lg:py-24 flex flex-col justify-center items-center lg:items-end">
+            <div className="max-w-xl w-full space-y-6 sm:space-y-8">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -81,7 +81,7 @@ export default function Home() {
                   <span className="game-number text-xl tracking-widest">GAME #2024</span>
                   <div className="flex-1 h-px bg-squid-pink/30"></div>
                 </div>
-                <h1 className="text-5xl lg:text-7xl font-bold">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold">
                   <span className="text-white block">Welcome to</span>
                   <span className="squid-text block mt-2">DigiSquid</span>
                   <span className="text-white block mt-2">Games</span>
@@ -94,7 +94,7 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="space-y-6"
               >
-                <p className="text-gray-400 text-lg">
+                <p className="text-gray-400 text-base sm:text-lg">
                   Enter the next generation of AI-driven survival games. 
                   Where strategy meets artificial intelligence, and only the most adaptable survive.
                 </p>
@@ -161,8 +161,8 @@ export default function Home() {
           </div>
 
           {/* Right Side - Game Modes */}
-          <div className="relative px-8 py-12 lg:py-24">
-            <div className="max-w-xl mx-auto space-y-8">
+          <div className="relative px-4 sm:px-8 py-8 sm:py-12 lg:py-24">
+            <div className="max-w-xl mx-auto space-y-6 sm:space-y-8">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -180,24 +180,24 @@ export default function Home() {
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 * index + 0.8 }}
-                      className="game-card p-6 rounded-xl relative group cursor-pointer"
+                      className="game-card p-4 sm:p-6 rounded-xl relative group cursor-pointer hover:scale-[1.02] transition-transform"
                     >
                       <Link 
                         href={`/docs/games/${feature.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
                         className="block"
                       >
                         <div className="flex items-start space-x-4">
-                          <div className="text-4xl group-hover:scale-110 transition-transform">
+                          <div className="text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
                             <feature.icon size={40} />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-xl font-semibold squid-text truncate">
+                            <h3 className="text-lg sm:text-xl font-semibold squid-text truncate">
                               {feature.title}
                             </h3>
                             <p className="text-gray-400 mt-2 text-sm line-clamp-2">
                               {feature.description}
                             </p>
-                            <div className="mt-3 flex items-center space-x-4">
+                            <div className="mt-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                               <span className="text-gray-400 text-xs font-mono">
                                 Players: {feature.players}
                               </span>
@@ -210,7 +210,7 @@ export default function Home() {
                             <span className="game-number font-mono">{feature.number}</span>
                           </div>
                         </div>
-                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                           <span className="text-squid-pink text-sm font-mono tracking-wider">ENTER GAME →</span>
                         </div>
                       </Link>

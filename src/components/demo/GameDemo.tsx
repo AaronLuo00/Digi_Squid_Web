@@ -50,17 +50,17 @@ export default function GameDemo() {
       style={{ opacity, scale }}
       className="relative"
     >
-      <div className="text-center mb-8">
-        <span className="game-number text-lg mb-2 block">GAME #456</span>
-        <h2 className="text-3xl font-bold squid-text mb-4">Red Light, Green Light</h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+      <div className="text-center mb-6 sm:mb-8 px-4">
+        <span className="game-number text-base sm:text-lg mb-2 block">GAME #456</span>
+        <h2 className="text-2xl sm:text-3xl font-bold squid-text mb-3 sm:mb-4">Red Light, Green Light</h2>
+        <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
           Test your reflexes against our AI movement prediction system. 
           One wrong move, and it&apos;s game over.
         </p>
       </div>
 
-      <div className="max-w-2xl mx-auto bg-gray-900/50 rounded-xl p-6 backdrop-blur-sm">
-        <div className="relative h-40 mb-4 border border-gray-800 rounded-lg overflow-hidden">
+      <div className="max-w-2xl mx-auto bg-gray-900/50 rounded-xl p-4 sm:p-6 backdrop-blur-sm">
+        <div className="relative h-32 sm:h-40 mb-4 border border-gray-800 rounded-lg overflow-hidden touch-none">
           {/* Game Grid */}
           <div className="absolute inset-0 grid grid-cols-[repeat(auto-fill,minmax(20px,1fr))] opacity-10">
             {[...Array(100)].map((_, i) => (
@@ -69,14 +69,14 @@ export default function GameDemo() {
           </div>
 
           {/* Traffic Light */}
-          <div className="absolute top-4 right-4 w-8 h-20 bg-gray-800 rounded-full p-2 flex flex-col justify-between">
-            <div className={`w-4 h-4 rounded-full ${lightColor === 'red' ? 'bg-red-500 animate-pulse' : 'bg-red-900'}`} />
-            <div className={`w-4 h-4 rounded-full ${lightColor === 'green' ? 'bg-green-500 animate-pulse' : 'bg-green-900'}`} />
+          <div className="absolute top-2 sm:top-4 right-2 sm:right-4 w-6 sm:w-8 h-16 sm:h-20 bg-gray-800 rounded-full p-1.5 sm:p-2 flex flex-col justify-between">
+            <div className={`w-3 sm:w-4 h-3 sm:h-4 rounded-full ${lightColor === 'red' ? 'bg-red-500 animate-pulse' : 'bg-red-900'}`} />
+            <div className={`w-3 sm:w-4 h-3 sm:h-4 rounded-full ${lightColor === 'green' ? 'bg-green-500 animate-pulse' : 'bg-green-900'}`} />
           </div>
 
           {/* Player */}
           <motion.div
-            className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-squid-pink rounded-sm"
+            className="absolute top-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 bg-squid-pink rounded-sm"
             animate={{ x: `${playerPosition}%` }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
           />
@@ -91,7 +91,7 @@ export default function GameDemo() {
                 setLightColor('red')
               }
             }}
-            className="squid-button px-6 py-2 rounded-lg text-sm font-semibold"
+            className="squid-button px-6 py-3 sm:py-2 rounded-lg text-sm font-semibold min-w-[120px]"
           >
             {isPlaying ? 'Reset Game' : 'Start Demo'}
           </button>

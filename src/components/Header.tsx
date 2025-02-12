@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Logo from './logo/Logo'
 
 interface NavItem {
@@ -12,6 +13,7 @@ interface NavItem {
 }
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navItems: NavItem[] = [
     { name: '001', label: 'Documentation', href: '/docs' },
     { name: '002', label: 'Community', href: 'https://t.me/+j8wJ6jOYR3tjNWRl' },
@@ -81,6 +83,8 @@ const Header = () => {
           <motion.button
             className="md:hidden squid-button px-3 py-1 rounded-md"
             whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
           >
             <span className="sr-only">Open menu</span>
             <svg
@@ -93,11 +97,63 @@ const Header = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
+                d={isMenuOpen 
+                  ? "M6 18L18 6M6 6l12 12" 
+                  : "M4 6h16M4 12h16M4 18h16"
+                }
               />
             </svg>
           </motion.button>
         </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-squid-pink/10"
+            >
+              <div className="px-4 py-2 space-y-1">
+                {/* Mobile Stats */}
+                <div className="grid grid-cols-2 gap-2 py-2 text-xs border-b border-squid-pink/10">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-squid-pink font-mono">ONLINE:</span>
+                    <span className="text-white font-mono">1,234</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-squid-pink font-mono">POOL:</span>
+                    <span className="text-white font-mono">88K</span>
+                  </div>
+                  <div className="flex items-center space-x-2 col-span-2">
+                    <span className="text-squid-pink font-mono">NEXT:</span>
+                    <span className="text-white font-mono">12:00 UTC</span>
+                  </div>
+                </div>
+
+                {/* Mobile Navigation */}
+                <nav className="py-2 space-y-1">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`block px-3 py-2 rounded-md text-base font-medium relative group ${
+                        item.special ? 'text-squid-pink' : 'text-gray-300'
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <span className="game-number absolute left-0 top-1/2 -translate-y-1/2 opacity-50 text-xs pl-1">
+                        {item.name === '005' ? '$' : item.name}
+                      </span>
+                      <span className="pl-6">{item.label}</span>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   )

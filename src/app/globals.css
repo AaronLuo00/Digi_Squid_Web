@@ -56,6 +56,7 @@ body {
   color: white;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .squid-button:hover {
@@ -63,17 +64,54 @@ body {
   transform: translateY(-2px);
 }
 
+@media (hover: none) {
+  .squid-button:active {
+    box-shadow: 0 0 20px rgba(255, 2, 102, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
 .game-card {
   background: rgba(17, 25, 40, 0.75);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 2, 102, 0.1);
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .game-card:hover {
   border-color: rgba(255, 2, 102, 0.5);
   box-shadow: 0 0 30px rgba(255, 2, 102, 0.1);
   transform: translateY(-2px);
+}
+
+@media (hover: none) {
+  .game-card:active {
+    border-color: rgba(255, 2, 102, 0.5);
+    box-shadow: 0 0 30px rgba(255, 2, 102, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+/* Optimize touch interactions */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Improve touch targets */
+  button, 
+  a {
+    min-height: 44px;
+    padding: 0.5rem;
+  }
+
+  /* Optimize scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
 }
 
 .split-section-bg {
