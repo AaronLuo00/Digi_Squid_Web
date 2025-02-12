@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/prismjs": "^1.26.5",
+    "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.0.5",
     "next": "15.1.6",
     "prismjs": "^1.29.0",
