@@ -39,10 +39,17 @@ const tournamentStages = [
 ]
 
 const rewardStructure = [
-  { position: '1st', reward: '3,750 $DSG', color: 'text-yellow-500' },
-  { position: '2nd', reward: '1,875 $DSG', color: 'text-gray-300' },
-  { position: '3rd', reward: '937 $DSG', color: 'text-amber-600' },
-  { position: '4th-10th', reward: '134 $DSG each', color: 'text-gray-400' }
+  { position: '1st', reward: '44,000 $DSG', color: 'text-yellow-500' },
+  { position: '2nd', reward: '22,000 $DSG', color: 'text-gray-300' },
+  { position: '3rd', reward: '11,000 $DSG', color: 'text-amber-600' },
+  { position: '4th-10th', reward: '1,571 $DSG each', color: 'text-gray-400' }
+]
+
+const tournamentStats = [
+  { label: 'Prize Pool', value: '88,000 $DSG' },
+  { label: 'Human Players', value: '100' },
+  { label: 'AI Agents', value: '100' },
+  { label: 'Duration', value: '4 Days' }
 ]
 
 export default function TournamentPage() {
@@ -64,7 +71,7 @@ export default function TournamentPage() {
           transition={{ delay: 0.1 }}
           className="text-4xl font-bold"
         >
-          Tournament System
+          Weekly Tournament
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -72,10 +79,34 @@ export default function TournamentPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          Weekly tournaments pit humans against AI in a battle for survival and rewards. 
-          Understanding the tournament structure is key to maximizing your chances of success.
+          Join our weekly mega-tournament where 100 human players compete against 100 advanced AI agents 
+          for an impressive prize pool of 88,000 $DSG. Experience the ultimate test of skill and strategy 
+          in this high-stakes competition.
         </motion.p>
       </div>
+
+      {/* Tournament Overview */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="p-6 border border-squid-pink/20 rounded-xl bg-gray-900/50 backdrop-blur-sm"
+      >
+        <h2 className="text-xl font-semibold mb-4">Tournament Overview</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {tournamentStats.map((stat) => (
+            <div
+              key={stat.label}
+              className="text-center space-y-2"
+            >
+              <div className="text-2xl font-mono text-squid-pink">
+                {stat.value}
+              </div>
+              <div className="text-sm text-gray-400">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
 
       {/* Tournament Stages */}
       <div className="space-y-8">

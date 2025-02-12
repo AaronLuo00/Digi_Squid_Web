@@ -18,6 +18,7 @@ const navigation = {
       href: '/docs/game-mechanics',
       icon: GameMechanicsIcon,
       items: [
+        { title: 'Single Play Mode', href: '/docs/game-mechanics/modes/single-play' },
         { title: 'Tournament System', href: '/docs/game-mechanics/tournament' },
         { title: 'Game Modes', href: '/docs/game-mechanics/modes' }
       ]

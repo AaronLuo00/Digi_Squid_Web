@@ -3,6 +3,31 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
+const playModes = [
+  {
+    title: 'Single Play Mode',
+    description: 'Challenge AI agents in individual matches anytime.',
+    details: [
+      'Flexible entry fee ($100-$1000 DSG)',
+      'Dynamic prize pool calculation',
+      'Instant match creation',
+      'One-on-one with AI'
+    ],
+    href: '/docs/game-mechanics/modes/single-play'
+  },
+  {
+    title: 'Weekly Tournament',
+    description: 'Compete in our mega-tournament with 100 players and 100 AI agents.',
+    details: [
+      '88,000 $DSG prize pool',
+      'Multiple tournament stages',
+      'Team formation mechanics',
+      'Live streaming finals'
+    ],
+    href: '/docs/game-mechanics/tournament'
+  }
+]
+
 const gameModes = [
   {
     number: '456',
@@ -88,82 +113,59 @@ export default function GameMechanicsPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          DigiSquid Games features multiple game modes, each with unique mechanics and 
-          strategies. Master these games to survive and earn rewards in our weekly tournaments.
+          DigiSquid Games offers two distinct ways to play: Single Play Mode for instant matches, 
+          and Weekly Tournaments for high-stakes competition. Choose your preferred mode and start 
+          earning rewards.
         </motion.p>
       </div>
 
-      {/* Tournament Overview */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-        className="p-6 border border-squid-pink/20 rounded-xl bg-gray-900/50 backdrop-blur-sm space-y-6"
-      >
-        <h2 className="text-xl font-semibold">Tournament Structure</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="space-y-2">
-            <div className="text-2xl font-mono text-squid-pink">100</div>
-            <div className="text-sm text-gray-400">Human Players</div>
-          </div>
-          <div className="space-y-2">
-            <div className="text-2xl font-mono text-squid-pink">100</div>
-            <div className="text-sm text-gray-400">AI Agents</div>
-          </div>
-          <div className="space-y-2">
-            <div className="text-2xl font-mono text-squid-pink">7,500</div>
-            <div className="text-sm text-gray-400">$DSG Prize Pool</div>
-          </div>
-        </div>
-        
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Tournament Phases</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border border-gray-800 rounded-lg">
-              <h4 className="font-semibold mb-2">Qualification Round</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>• Individual game performance tracking</li>
-                <li>• Top 50% players advance</li>
-                <li>• Minimum score requirements</li>
-              </ul>
-            </div>
-            <div className="p-4 border border-gray-800 rounded-lg">
-              <h4 className="font-semibold mb-2">Alliance Formation</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>• Strategic team building</li>
-                <li>• Resource sharing options</li>
-                <li>• Trust score system</li>
-              </ul>
-            </div>
-            <div className="p-4 border border-gray-800 rounded-lg">
-              <h4 className="font-semibold mb-2">Main Tournament</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>• Cross-game challenges</li>
-                <li>• Dynamic difficulty scaling</li>
-                <li>• Real-time leaderboard</li>
-              </ul>
-            </div>
-            <div className="p-4 border border-gray-800 rounded-lg">
-              <h4 className="font-semibold mb-2">Finals</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>• Elite player showdown</li>
-                <li>• Special game modes</li>
-                <li>• Live streaming events</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Game Modes */}
+      {/* Play Modes */}
       <div className="space-y-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.3 }}
           className="text-2xl font-semibold"
         >
-          Game Modes
+          Play Modes
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {playModes.map((mode, index) => (
+            <motion.div
+              key={mode.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 + index * 0.1 }}
+            >
+              <Link
+                href={mode.href}
+                className="block h-full p-6 border border-gray-800 rounded-xl hover:border-squid-pink/50 transition-colors group"
+              >
+                <h3 className="text-xl font-semibold mb-2 squid-text">{mode.title}</h3>
+                <p className="text-gray-400 text-sm mb-4">{mode.description}</p>
+                <ul className="space-y-2">
+                  {mode.details.map((detail, i) => (
+                    <li key={i} className="flex items-center text-sm text-gray-500">
+                      <span className="text-squid-pink mr-2">→</span>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Game Types */}
+      <div className="space-y-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="text-2xl font-semibold"
+        >
+          Game Types
         </motion.h2>
         <div className="space-y-6">
           {gameModes.map((mode, index) => (
@@ -171,7 +173,7 @@ export default function GameMechanicsPage() {
               key={mode.number}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
+              transition={{ delay: 0.7 + index * 0.1 }}
               className="p-6 border border-gray-800 rounded-xl hover:border-squid-pink/50 transition-colors group"
             >
               <div className="flex items-start space-x-6">
@@ -198,21 +200,21 @@ export default function GameMechanicsPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
+        transition={{ delay: 1.2 }}
         className="flex space-x-4"
       >
         <Link
-          href="/docs/game-mechanics/tournament"
+          href="/docs/game-mechanics/modes/single-play"
           className="squid-button px-4 py-2 rounded-lg text-sm inline-flex items-center group"
         >
-          Learn Tournament System
+          Try Single Play Mode
           <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
         </Link>
         <Link
-          href="/docs/game-mechanics/modes"
+          href="/docs/game-mechanics/tournament"
           className="border border-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm"
         >
-          Explore Game Modes
+          Join Weekly Tournament
         </Link>
       </motion.div>
     </div>

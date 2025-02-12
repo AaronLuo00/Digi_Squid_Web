@@ -4,44 +4,44 @@ import { motion } from 'framer-motion'
 
 const rewardTypes = [
   {
-    title: 'Tournament Prizes',
-    description: 'Primary rewards for tournament performance.',
+    title: 'Single Play Rewards',
+    description: 'Rewards for individual and team matches.',
     tiers: [
-      { position: '1st Place', reward: '3,750 $DSG', color: 'text-yellow-500' },
-      { position: '2nd Place', reward: '1,875 $DSG', color: 'text-gray-300' },
-      { position: '3rd Place', reward: '937 $DSG', color: 'text-amber-600' },
-      { position: 'Top 10', reward: '134 $DSG', color: 'text-gray-400' }
+      { position: 'Solo Victory', reward: '95% of Prize Pool', color: 'text-yellow-500' },
+      { position: 'Team Victory', reward: '90% Split', color: 'text-gray-300' },
+      { position: 'Mixed Battle Win', reward: '92% Split', color: 'text-amber-600' },
+      { position: 'Runner-up', reward: 'Proportional Share', color: 'text-gray-400' }
     ]
   },
   {
-    title: 'Survival Rewards',
-    description: 'Daily rewards for staying alive in tournaments.',
+    title: 'Tournament Rewards',
+    description: 'Weekly tournament prize distribution.',
     tiers: [
-      { position: 'Day 1', reward: '10 $DSG', color: 'text-gray-400' },
-      { position: 'Day 3', reward: '50 $DSG', color: 'text-gray-300' },
-      { position: 'Day 5', reward: '100 $DSG', color: 'text-amber-600' },
-      { position: 'Day 7', reward: '200 $DSG', color: 'text-yellow-500' }
+      { position: '1st Place', reward: '44,000 $DSG', color: 'text-yellow-500' },
+      { position: '2nd Place', reward: '22,000 $DSG', color: 'text-gray-300' },
+      { position: '3rd Place', reward: '11,000 $DSG', color: 'text-amber-600' },
+      { position: '4th-10th', reward: '1,571 $DSG each', color: 'text-gray-400' }
     ]
   },
   {
     title: 'Achievement Bonuses',
     description: 'Special rewards for accomplishing specific feats.',
     tiers: [
-      { position: 'First Win', reward: '500 $DSG', color: 'text-yellow-500' },
-      { position: 'Perfect Game', reward: '1,000 $DSG', color: 'text-amber-600' },
-      { position: 'Team Victory', reward: '250 $DSG', color: 'text-gray-300' },
-      { position: 'Survival Streak', reward: '300 $DSG', color: 'text-gray-400' }
+      { position: 'Perfect Game', reward: '1,000 $DSG', color: 'text-yellow-500' },
+      { position: 'Win Streak (5)', reward: '500 $DSG', color: 'text-amber-600' },
+      { position: 'Team MVP', reward: '250 $DSG', color: 'text-gray-300' },
+      { position: 'AI Master', reward: '300 $DSG', color: 'text-gray-400' }
     ]
   }
 ]
 
 const rewardMultipliers = [
   {
-    factor: 'Consecutive Participation',
+    factor: 'AI Difficulty',
     multipliers: [
-      { condition: '3 tournaments', value: '1.1x' },
-      { condition: '5 tournaments', value: '1.25x' },
-      { condition: '10 tournaments', value: '1.5x' }
+      { condition: 'Basic AI', value: '1.0x' },
+      { condition: 'Advanced AI', value: '1.2x' },
+      { condition: 'Expert AI', value: '1.5x' }
     ]
   },
   {
@@ -64,36 +64,49 @@ const rewardMultipliers = [
 
 const rewardFormulas = [
   {
-    name: 'Tournament Prize',
-    formula: 'Base Prize × Performance Multiplier × Staking Multiplier',
+    name: 'Single Play Prize',
+    formula: 'Total Entry Fees × (1 - Platform Fee)',
     example: `
 // Example calculation
-const calculatePrize = (
-  baseAmount: number,
-  performance: number,
-  staking: number
+const calculateSinglePlayPrize = (
+  entryFee: number,
+  players: number,
+  platformFee: number
 ): number => {
-  return baseAmount * performance * staking;
+  const totalFees = entryFee * players;
+  return totalFees * (1 - platformFee);
 }
 
-// First place with 1.5x performance and 1.3x staking
-const prize = calculatePrize(3750, 1.5, 1.3);  // 7,312.5 $DSG`
+// 4 players, $500 DSG entry, 7.5% fee
+const prize = calculateSinglePlayPrize(500, 4, 0.075);  // 1,850 $DSG
+
+// Distribution example for team game
+const teamDistribution = {
+  first: prize * 0.5,    // 925 $DSG
+  second: prize * 0.3,   // 555 $DSG
+  third: prize * 0.2     // 370 $DSG
+};`
   },
   {
-    name: 'Survival Reward',
-    formula: 'Daily Rate × Survival Days × Streak Multiplier',
+    name: 'Tournament Prize',
+    formula: 'Fixed Prize Pool with Position-based Distribution',
     example: `
 // Example calculation
-const calculateSurvival = (
-  dailyRate: number,
-  days: number,
-  streak: number
+const calculateTournamentPrize = (
+  position: number,
+  prizePool: number = 88000
 ): number => {
-  return dailyRate * days * (1 + (streak * 0.1));
-}
-
-// 5 days survival with 3-day streak
-const reward = calculateSurvival(10, 5, 3);  // 65 $DSG`
+  const distribution = {
+    1: 0.5,    // 50% for 1st = 44,000 $DSG
+    2: 0.25,   // 25% for 2nd = 22,000 $DSG
+    3: 0.125,  // 12.5% for 3rd = 11,000 $DSG
+    other: 0.125 / 7  // ~1.8% each for 4th-10th = 1,571 $DSG
+  };
+  
+  return prizePool * (position <= 3 
+    ? distribution[position] 
+    : (position <= 10 ? distribution.other : 0));
+}`
   }
 ]
 
@@ -124,8 +137,9 @@ export default function RewardsPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          Our comprehensive reward system incentivizes participation, skill, and 
-          long-term engagement through various reward mechanisms.
+          DigiSquid Games features two main reward systems: Single Play rewards based on entry fees 
+          and platform fees, and Tournament rewards with fixed prize pools. Both systems are enhanced 
+          by achievement bonuses and multipliers.
         </motion.p>
       </div>
 
