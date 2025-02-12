@@ -20,7 +20,7 @@ export default function Home() {
       icon: RedLightGreenLightIcon,
       tokenReward: '1000 $DSG',
       players: 'Registration Open',
-      entryFee: '$100 - $1000 DSG'
+      entryFee: '$100 - $10000 DSG'
     },
     {
       number: '123',
