@@ -21,7 +21,7 @@ export default function DemoPage() {
         >
           <span className="game-number text-xl mb-2 block">#DEMO_2025</span>
           <h1 className="text-4xl md:text-6xl font-bold squid-text mb-4">
-            Experience DigiSquid
+            Experience DegenSquid
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Dive into the future of AI-driven gaming. Explore our unique blend of 

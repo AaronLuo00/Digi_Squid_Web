@@ -71,7 +71,7 @@ export default function TokenDemo() {
         <span className="game-number text-lg mb-2 block">GAME #218</span>
         <h2 className="text-3xl font-bold squid-text mb-4">Token Economics</h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Experience our dynamic token economy. Watch how $DSQD flows through the 
+          Experience our dynamic token economy. Watch how $DSG flows through the 
           ecosystem, rewarding players and maintaining game balance.
         </p>
       </div>
@@ -85,7 +85,7 @@ export default function TokenDemo() {
               className="token-amount text-2xl"
               animate={{ scale: totalStaked > 5000 ? [1, 1.1, 1] : 1 }}
             >
-              {totalStaked.toLocaleString()} $DSQD
+              {totalStaked.toLocaleString()} $DSG
             </motion.div>
           </div>
           <div className="p-4 border border-gray-800 rounded-lg">
@@ -94,7 +94,7 @@ export default function TokenDemo() {
               className="token-amount text-2xl"
               animate={{ scale: rewardPool < 7500 ? [1, 1.1, 1] : 1 }}
             >
-              {rewardPool.toLocaleString()} $DSQD
+              {rewardPool.toLocaleString()} $DSG
             </motion.div>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function TokenDemo() {
                     <span className="text-sm capitalize">{tx.type}</span>
                   </div>
                   <span className="token-amount text-sm">
-                    {tx.type === 'reward' ? '-' : '+'}{tx.amount} $DSQD
+                    {tx.type === 'reward' ? '-' : '+'}{tx.amount} $DSG
                   </span>
                 </motion.div>
               ))
