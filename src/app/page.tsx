@@ -83,7 +83,7 @@ export default function Home() {
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold">
                   <span className="text-white block">Welcome to</span>
-                  <span className="squid-text block mt-2">DigiSquid</span>
+                  <span className="squid-text block mt-2">DegenSquid</span>
                   <span className="text-white block mt-2">Games</span>
                 </h1>
               </motion.div>
@@ -104,14 +104,14 @@ export default function Home() {
                   transition={{ delay: 0.3 }}
                 >
                   <a 
-                    href="https://www.digimon.tech" 
+                    href="https://www.degen.tech" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="engine-credit group"
                   >
                     <span className="game-number text-xs mr-2">※</span>
                     <span className="text-gray-400 group-hover:text-squid-pink transition-colors">
-                      Built based on Digimon Engine
+                      Built based on Degen Engine
                     </span>
                   </a>
                 </motion.div>
@@ -134,7 +134,7 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <a 
-                  href="https://github.com/CohumanSpace/digimon-engine"
+                  href="https://github.com/CohumanSpace/degen-engine"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="squid-button px-8 py-4 rounded-lg text-lg font-semibold group relative inline-flex items-center justify-center"

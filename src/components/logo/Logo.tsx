@@ -140,14 +140,14 @@ const Logo = () => {
         transition={{ duration: 0.5, delay: 0.8 }}
       >
         <motion.span
-          className="text-2xl digimon-text inline-block"
+          className="text-2xl degen-text inline-block"
           whileHover={{ 
             scale: 1.05,
             textShadow: "0 0 8px rgba(255,2,102,0.5)"
           }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          DigiSquid
+          DegenSquid
         </motion.span>
         <motion.div
           className="absolute -top-1 -right-3 text-squid-pink opacity-50 text-xs font-mono"

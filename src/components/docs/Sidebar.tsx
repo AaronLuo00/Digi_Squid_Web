@@ -161,7 +161,7 @@ const Sidebar = () => {
             <div className="relative z-10 p-6 space-y-8">
               {/* Logo */}
               <Link href="/" className="block">
-                <h1 className="text-xl font-bold squid-text">DigiSquid Docs</h1>
+                <h1 className="text-xl font-bold squid-text">DegenSquid Docs</h1>
               </Link>
 
               {/* Main Navigation */}

@@ -43,7 +43,7 @@ export default function DocsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl font-bold"
         >
-          DigiSquid Documentation
+          DegenSquid Documentation
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ export default function DocsPage() {
           transition={{ delay: 0.1 }}
           className="text-gray-400 text-lg"
         >
-          Your comprehensive guide to the DigiSquid Games ecosystem. Learn about our game mechanics, 
+          Your comprehensive guide to the DegenSquid Games ecosystem. Learn about our game mechanics, 
           AI system, and token economics.
         </motion.p>
       </div>
@@ -110,7 +110,7 @@ export default function DocsPage() {
       >
         <h2 className="text-xl font-semibold">Getting Started</h2>
         <p className="text-gray-400">
-          DigiSquid Games combines AI-driven gameplay with blockchain rewards to create 
+          DegenSquid Games combines AI-driven gameplay with blockchain rewards to create 
           an unprecedented gaming experience. Start with our tournament system guide to 
           understand how to participate and earn rewards.
         </p>
