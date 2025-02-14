@@ -20,7 +20,7 @@ export default function Home() {
       icon: RedLightGreenLightIcon,
       tokenReward: '1000 $DSG',
       players: 'Registration Open',
-      entryFee: '$100 - $1000 DSG'
+      entryFee: '$0 - $1000 DSG'
     },
     {
       number: '123',
@@ -29,7 +29,7 @@ export default function Home() {
       icon: TugOfWarIcon,
       tokenReward: '2000 $DSG',
       players: 'Registration Open',
-      entryFee: '$100 - $1000 DSG'
+      entryFee: '$0 - $1000 DSG'
     },
     {
       number: '067',
@@ -38,7 +38,7 @@ export default function Home() {
       icon: MarbleIcon,
       tokenReward: '1500 $DSG',
       players: 'Registration Open',
-      entryFee: '$100 - $1000 DSG'
+      entryFee: '$0 - $1000 DSG'
     },
     {
       number: '218',
@@ -47,7 +47,7 @@ export default function Home() {
       icon: CookieIcon,
       tokenReward: '1800 $DSG',
       players: 'Registration Open',
-      entryFee: '$100 - $1000 DSG'
+      entryFee: '$0 - $1000 DSG'
     },
     {
       number: '199',
@@ -56,7 +56,7 @@ export default function Home() {
       icon: DinnerIcon,
       tokenReward: '2500 $DSG',
       players: 'Registration Open',
-      entryFee: '$100 - $1000 DSG'
+      entryFee: '$0 - $1000 DSG'
     }
   ]
 
