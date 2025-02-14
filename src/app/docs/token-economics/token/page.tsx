@@ -186,7 +186,7 @@ export default function TokenPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          The native utility token of DegenSquid Games, built on Solana for
+          The native utility token of DigitalSquid Games, built on Solana for
           high-speed, low-cost transactions and seamless gameplay integration.
         </motion.p>
       </div>

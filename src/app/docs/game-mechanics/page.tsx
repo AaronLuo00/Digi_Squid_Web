@@ -113,7 +113,7 @@ export default function GameMechanicsPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          DegenSquid Games offers two distinct ways to play: Single Play Mode for instant matches,
+          DigitalSquid Games offers two distinct ways to play: Single Play Mode for instant matches,
           and Weekly Tournaments for high-stakes competition. Choose your preferred mode and start 
           earning rewards.
         </motion.p>

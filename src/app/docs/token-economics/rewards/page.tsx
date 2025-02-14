@@ -137,7 +137,7 @@ export default function RewardsPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          DegenSquid Games features two main reward systems: Single Play rewards based on entry fees
+          DigitalSquid Games features two main reward systems: Single Play rewards based on entry fees
           and platform fees, and Tournament rewards with fixed prize pools. Both systems are enhanced 
           by achievement bonuses and multipliers.
         </motion.p>

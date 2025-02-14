@@ -147,7 +147,7 @@ const Logo = () => {
           }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          DegenSquid
+          DigitalSquid
         </motion.span>
         <motion.div
           className="absolute -top-1 -right-3 text-squid-pink opacity-50 text-xs font-mono"

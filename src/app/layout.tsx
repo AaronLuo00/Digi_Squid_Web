@@ -6,7 +6,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'DegenSquid Games - AI-Native Tournament Platform',
+  title: 'DigitalSquid Games - AI-Native Tournament Platform',
   description: 'Where AI Meets Survival Gaming. Push the boundaries of digital survival in an AI-driven world.',
 }
 

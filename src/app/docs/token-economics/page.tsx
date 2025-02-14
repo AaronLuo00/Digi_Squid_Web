@@ -6,7 +6,7 @@ import Link from 'next/link'
 const tokenFeatures = [
   {
     title: '$DSG Token',
-    description: 'The native token powering the DegenSquid Games ecosystem.',
+    description: 'The native token powering the DigitalSquid Games ecosystem.',
     details: [
       'Solana SPL Token',
       'Cross-game utility',
@@ -100,7 +100,7 @@ export default function TokenEconomicsPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          $DSG is the native token of DegenSquid Games, powering our tournament 
+          $DSG is the native token of DigitalSquid Games, powering our tournament 
           system and reward mechanisms on the Solana blockchain.
         </motion.p>
       </div>

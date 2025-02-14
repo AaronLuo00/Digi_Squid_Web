@@ -103,7 +103,7 @@ export default function SinglePlayPage() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg"
         >
-          Experience DegenSquid games in flexible formats. Play solo against AI, team up with
+          Experience DigitalSquid games in flexible formats. Play solo against AI, team up with
           friends, or join mixed battles with both human players and AI agents. Choose your 
           entry fee and compete for dynamic prize pools.
         </motion.p>
